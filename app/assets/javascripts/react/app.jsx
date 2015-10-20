@@ -1,7 +1,7 @@
 import 'babel-core/polyfill';
 
-import App from './app/components/App';
-import AppHomeRoute from './app/routes/AppHomeRoute';
+import App from './components/App';
+import AppHomeRoute from './routes/AppHomeRoute';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Relay from 'react-relay';
