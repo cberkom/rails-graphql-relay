@@ -4,4 +4,5 @@ class ApplicationController < ActionController::Base
   def start
     # render the page
   end
+
 end

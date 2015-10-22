@@ -1,6 +1,7 @@
 import React from 'react';
 import Relay from 'react-relay';
 import ReactDOM from 'react-dom';
+import ReactRouterRelay from 'react-router-relay';
 import {Router, Route, IndexRoute} from 'react-router';
 import { createHistory } from 'history';
 
@@ -32,7 +33,7 @@ function createPageContainer(Component, props) {
 export default function(){
     ReactDOM.render(
         <Router
-            createElement={createPageContainer}
+            createElement={ReactRouterRelay.createElement}
             history={createHistory()}>
             <Route path="/" component={AppLayout.Component}>
                 <IndexRoute component={HomePage.Component} />
@@ -47,6 +48,7 @@ export default function(){
                     path="widgets/:id"
                     component={WidgetPage.RelayContainer}
                     queries={WidgetPage.Queries}
+                    prepareParams={WidgetPage.PrepareParams}
                 />
             </Route>
         </Router>,

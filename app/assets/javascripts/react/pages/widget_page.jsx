@@ -23,21 +23,26 @@ export class Widget extends React.Component {
 
 export const Queries = {
     widget: (Component) => Relay.QL`
-        query {
-          node(id: $id) {
-            ${Component.getFragment('widget')},
-          },
-        }
-    `,
+            query {
+                widget(id: $id) {
+                    ${Component.getFragment('widget')},
+                },
+            }
+        `
 };
 
 export const RelayContainer = Relay.createContainer(Widget, {
     fragments: {
         widget: () => Relay.QL`
-          fragment on Widget {
-            id,
-            name,
-          }
-        `,
-    },
+            fragment on Widget {
+                id,
+                name,
+            }
+        `
+    }
 });
+
+export const PrepareParams = (params, route) => {
+    params.id = parseInt(params.id);
+    return {...params};
+};

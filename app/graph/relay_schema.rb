@@ -11,3 +11,11 @@ def RelaySchema.checksum
   content = files.map { |f| File.read(f) }.join
   Digest::SHA256.hexdigest(content).to_s
 end
+
+class AuthorizationMiddleware
+  def call(parent_type, parent_object, field_definition, field_args, query_context, next_middleware)
+    next_middleware.call
+  end
+end
+
+RelaySchema.middleware << AuthorizationMiddleware.new
