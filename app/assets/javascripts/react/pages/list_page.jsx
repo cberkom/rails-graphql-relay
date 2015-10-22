@@ -4,14 +4,14 @@ import 'babel-core/polyfill';
 
 import {Link} from 'react-router';
 
-export class Widget extends React.Component {
+export class List extends React.Component {
     render() {
-        var {widget} = this.props;
+        var {list} = this.props;
         return (
             <div>
-                <h1>Widget {widget.name}</h1>
+                <h1>List {list.name}</h1>
                 <div>
-                    {widget.id}
+                    {list.id}
                 </div>
                 <div>
                     <Link to="/">Home</Link>
@@ -22,19 +22,19 @@ export class Widget extends React.Component {
 }
 
 export const Queries = {
-    widget: (Component) => Relay.QL`
+    list: (Component) => Relay.QL`
         query {
           node(id: $id) {
-            ${Component.getFragment('widget')},
+            ${Component.getFragment('list')},
           },
         }
     `,
 };
 
-export const RelayContainer = Relay.createContainer(Widget, {
+export const RelayContainer = Relay.createContainer(List, {
     fragments: {
-        widget: () => Relay.QL`
-          fragment on Widget {
+        list: () => Relay.QL`
+          fragment on List {
             id,
             name,
           }

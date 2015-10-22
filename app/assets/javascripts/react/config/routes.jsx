@@ -8,8 +8,8 @@ import { createHistory } from 'history';
 import * as AppLayout from '../layouts/app_layout';
 import * as HomePage from '../pages/home_page';
 import * as UserPage from '../pages/user_page';
-import * as WidgetPage from 'react/pages/widget_page';
-import * as WidgetsPage from 'react/pages/widgets_page';
+import * as ListPage from 'react/pages/list_page';
+import * as ListsPage from 'react/pages/lists_page';
 
 // A wrapper to create a Relay container
 function createPageContainer(Component, props) {
@@ -37,16 +37,16 @@ export default function(){
             <Route path="/" component={AppLayout.Component}>
                 <IndexRoute component={HomePage.Component} />
                 <Route
-                    name="widgets"
-                    path="widgets"
-                    component={WidgetsPage.RelayContainer}
-                    queries={WidgetsPage.Queries}
+                    name="lists"
+                    path="lists"
+                    component={ListsPage.RelayContainer}
+                    queries={ListsPage.Queries}
                     />
                 <Route
-                    name="widget"
-                    path="widgets/:id"
-                    component={WidgetPage.RelayContainer}
-                    queries={WidgetPage.Queries}
+                    name="list"
+                    path="lists/:id"
+                    component={ListPage.RelayContainer}
+                    queries={ListPage.Queries}
                 />
             </Route>
         </Router>,

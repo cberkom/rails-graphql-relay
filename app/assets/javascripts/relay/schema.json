@@ -53,7 +53,7 @@
               "deprecationReason": null
             },
             {
-              "name": "widgets",
+              "name": "lists",
               "description": null,
               "args": [
                 {
@@ -109,7 +109,7 @@
               ],
               "type": {
                 "kind": "OBJECT",
-                "name": "WidgetConnection",
+                "name": "ListConnection",
                 "ofType": null
               },
               "isDeprecated": false,
@@ -216,7 +216,7 @@
           "possibleTypes": [
             {
               "kind": "OBJECT",
-              "name": "Widget",
+              "name": "List",
               "ofType": null
             },
             {
@@ -238,8 +238,8 @@
         },
         {
           "kind": "OBJECT",
-          "name": "Widget",
-          "description": "A shiny widget",
+          "name": "List",
+          "description": "A shiny list",
           "fields": [
             {
               "name": "id",
@@ -361,7 +361,7 @@
               "deprecationReason": null
             },
             {
-              "name": "widgets",
+              "name": "lists",
               "description": null,
               "args": [
                 {
@@ -417,7 +417,7 @@
               ],
               "type": {
                 "kind": "OBJECT",
-                "name": "WidgetConnection",
+                "name": "ListConnection",
                 "ofType": null
               },
               "isDeprecated": false,
@@ -437,7 +437,7 @@
         },
         {
           "kind": "OBJECT",
-          "name": "WidgetConnection",
+          "name": "ListConnection",
           "description": null,
           "fields": [
             {
@@ -451,7 +451,7 @@
                 "name": "List",
                 "ofType": {
                   "kind": "OBJECT",
-                  "name": "WidgetEdge",
+                  "name": "ListEdge",
                   "ofType": null
                 }
               },
@@ -482,7 +482,7 @@
         },
         {
           "kind": "OBJECT",
-          "name": "WidgetEdge",
+          "name": "ListEdge",
           "description": null,
           "fields": [
             {
@@ -493,7 +493,7 @@
               ],
               "type": {
                 "kind": "OBJECT",
-                "name": "Widget",
+                "name": "List",
                 "ofType": null
               },
               "isDeprecated": false,

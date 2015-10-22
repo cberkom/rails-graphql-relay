@@ -9,9 +9,9 @@ UserType = GraphQL::ObjectType.define do
   field :last_name, types.String
   field :email, types.String
 
-  connection :widgets, WidgetType.connection_type do
+  connection :lists, ListType.connection_type do
     resolve ->(user, args, ctx){
-      user.widgets
+      user.lists
     }
   end
 end

@@ -6,6 +6,6 @@
   )
 
   5.times do
-    user.widgets.create name: Faker::Internet.user_name
+    user.lists.create name: Faker::Internet.user_name
   end
 end

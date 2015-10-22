@@ -9,9 +9,9 @@ QueryType = GraphQL::ObjectType.define do
     resolve -> (obj, args, ctx) { User.first }
   end
 
-  connection :widgets, WidgetType.connection_type do
+  connection :lists, ListType.connection_type do
     resolve ->(object, args, ctx){
-      Widget.all
+      List.all
     }
   end
 

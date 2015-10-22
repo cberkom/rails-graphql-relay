@@ -2,9 +2,9 @@ class Page extends React.Component {
     render() {
         return (
             <div>
-                <h1>Widget list</h1>
+                <h1>List list</h1>
                 <ul>
-                    {this.props.viewer.widgets.edges.map(edge =>
+                    {this.props.viewer.lists.edges.map(edge =>
                             <li>{edge.node.name} (ID: {edge.node.id})</li>
                     )}
                 </ul>
