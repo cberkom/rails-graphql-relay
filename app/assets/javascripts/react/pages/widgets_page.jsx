@@ -13,7 +13,6 @@ class WidgetListItem extends React.Component {
         )
     }
 }
-
 class WidgetList extends React.Component {
     render() {
         var {widgets} = this.props;
