@@ -1,7 +1,8 @@
 class GraphQlController < ApplicationController
 
   def execute
-    result = RelaySchema.execute(params[:query])
+    puts params[:query]
+    result = RelaySchema.execute(params[:query], debug: true)
     render json: result
   end
 

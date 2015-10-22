@@ -1,4 +1,4 @@
-import startApp from 'react/app';
+import Routes from 'react/config/routes';
 import $ from 'jquery';
 
-$(document).ready(startApp);
+$(document).ready(Routes);

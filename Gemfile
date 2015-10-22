@@ -12,6 +12,7 @@ gem 'graphql'
 gem 'graphql-relay'
 gem 'sqlite3'
 gem 'faker'
+gem 'bootstrap-sass'
 
 group :doc do
   gem 'sdoc', '~> 0.4.0'
