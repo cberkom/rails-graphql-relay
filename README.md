@@ -1,5 +1,5 @@
 # React On Rails
-An implementation of the react example app, delivered by rails and the asset pipeline.
+An implementation of the Relay.js example app, delivered by rails and the asset pipeline.
 
 # Setup
 
