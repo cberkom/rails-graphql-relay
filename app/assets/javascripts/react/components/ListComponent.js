@@ -33,14 +33,13 @@ export class List extends React.Component {
         this.setEditMode(false);
     };
 
-    onSaveClick = () => {
+    onSaveClick = (name) => {
         const {list} = this.props;
 
         this.setEditMode(false);
         Relay.Store.update(
             new EditListMutation({list, name})
         );
-        debugger;
     };
 
     setEditMode(isEditing) {

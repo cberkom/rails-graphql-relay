@@ -11,14 +11,10 @@ export default class RemoveListMutation extends Relay.Mutation {
     };
 
     getMutation() {
-    console.log('mutation')
-    debugger;
         return Relay.QL`mutation{removeList}`;
     }
 
     getFatQuery() {
-    console.log('fat query');
-    debugger;
         return Relay.QL`
           fragment on RemoveListPayload {
            list,
@@ -27,8 +23,6 @@ export default class RemoveListMutation extends Relay.Mutation {
     }
 
     getConfigs() {
-    console.log('configs');
-    debugger;
         return [{
             type: 'NODE_DELETE',
             connectionName: 'lists',
@@ -37,16 +31,12 @@ export default class RemoveListMutation extends Relay.Mutation {
     }
 
     getVariables() {
-    console.log('varibales');
-    debugger;
         return {
             id: this.props.list.id
         };
     }
 
     getOptimisticResponse() {
-    console.log('response');
-    debugger;
         const {list} = this.props;
 
         return {

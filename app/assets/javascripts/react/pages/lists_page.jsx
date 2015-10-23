@@ -4,10 +4,17 @@ import 'babel-core/polyfill';
 
 import {Link} from 'react-router';
 import * as ListComponent from 'react/components/ListComponent';
-import * as ListNameInputComponent from 'react/components/ListNameInputComponent';
+import ListNameInputComponent from 'react/components/ListNameInputComponent';
 import * as EditListMutation from 'react/mutations/EditListMutation';
+import AddListMutation from 'react/mutations/AddListMutation';
 
 class ListList extends React.Component {
+
+    onNewListSave = (name) => {
+        Relay.Store.update(
+            new AddListMutation({name})
+        );
+    };
 
     renderLists() {
         var {lists} = this.props;
@@ -22,12 +29,20 @@ class ListList extends React.Component {
 
     render() {
         return (
+            <section className="lists">
             <div>
                 <h1>Todo Lists</h1>
+                <ListNameInputComponent
+                    className="new-list"
+                    placeholder="What's the name of your list?"
+                    autofocus
+                    onSave={this.onNewListSave}
+                    />
                 <ul className="list">
                     {this.renderLists()}
                 </ul>
             </div>
+            </section>
         );
     }
 }
