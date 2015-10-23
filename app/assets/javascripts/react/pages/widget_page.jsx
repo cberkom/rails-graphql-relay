@@ -16,9 +16,6 @@ export class Widget extends React.Component {
                 <div>
                     <Link to="/">Home</Link>
                 </div>
-                <Modal>
-                    <UserSettings/>
-                </Modal>
             </div>
         );
     }
