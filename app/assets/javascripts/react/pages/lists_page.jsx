@@ -3,29 +3,27 @@ import Relay from 'react-relay';
 import 'babel-core/polyfill';
 
 import {Link} from 'react-router';
-
-class ListListItem extends React.Component {
-    render() {
-        return (
-            <li>
-                <Link to={`/lists/${this.props.list.id}`}>{this.props.list.name}</Link>
-            </li>
-        )
-    }
-}
+import * as ListComponent from 'react/components/ListComponent';
 
 class ListList extends React.Component {
-    render() {
-        var {lists} = this.props;
-        var listListItems = lists.edges.map(edge =>
-            <ListListItem key={edge.node.id} list={edge.node}/>
-        );
 
+    renderLists() {
+        var {lists} = this.props;
+        return lists.edges.map(({node}) =>
+            <ListComponent.List
+                key={node.id}
+                list={node}
+                name={node.name}
+            />
+        );
+    }
+
+    render() {
         return (
             <div>
-                <h1>Lists</h1>
-                <ul>
-                    {listListItems}
+                <h1>Todo Lists</h1>
+                <ul className="list">
+                    {this.renderLists()}
                 </ul>
             </div>
         );
