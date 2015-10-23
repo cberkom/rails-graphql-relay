@@ -11,9 +11,8 @@ end
 EditListMutation = GraphQL::Relay::Mutation.define do
   name "EditList"
 
-  input_field :listName, !types.String
-
-  return_field :list, List
+  input_field :name, !types.String
+  return_field :list, ListType
 
   resolve -> (inputs, ctx) {
     list = TODO_DATA.edit_list(inputs["listName"])
