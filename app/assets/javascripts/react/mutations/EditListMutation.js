@@ -10,12 +10,10 @@ export default class EditListMutation extends Relay.Mutation {
     };
 
     getMutation() {
-        console.log('mutation');
         return Relay.QL`mutation{editList}`;
     }
 
     getFatQuery() {
-        console.log('fat query');
         return Relay.QL`
           fragment on EditListPayload {
             list {
@@ -26,7 +24,6 @@ export default class EditListMutation extends Relay.Mutation {
     }
 
     getConfigs() {
-        console.log('configs');
         return [{
             type: 'FIELDS_CHANGE',
             fieldIDs: {
@@ -36,7 +33,6 @@ export default class EditListMutation extends Relay.Mutation {
     }
 
     getVariables() {
-        console.log('variables');
         return {
             id: this.props.list.id,
             name: this.props.name

@@ -1,4 +1,4 @@
-RelaySchema = GraphQL::Schema.new(query: QueryType)
+RelaySchema = GraphQL::Schema.new(query: QueryType, mutation: MutationType)
 
 def RelaySchema.explain
   Rails.cache.fetch checksum do
