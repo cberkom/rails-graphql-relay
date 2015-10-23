@@ -4,6 +4,8 @@ import 'babel-core/polyfill';
 
 import {Link} from 'react-router';
 import * as ListComponent from 'react/components/ListComponent';
+import * as ListNameInputComponent from 'react/components/ListNameInputComponent';
+import * as EditListMutation from 'react/mutations/EditListMutation';
 
 class ListList extends React.Component {
 
