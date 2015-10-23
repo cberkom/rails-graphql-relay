@@ -33,7 +33,7 @@ export class List extends React.Component {
         this.setEditMode(false);
     };
 
-    onSaveClick = (name) => {
+    handleSave = (name) => {
         const {list} = this.props;
 
         this.setEditMode(false);
@@ -64,7 +64,7 @@ export class List extends React.Component {
                 initialValue={this.props.list.name}
                 onCanvel={this.onCancelClick}
                 onDelete={this.onDestroyClick}
-                onSave={this.onSaveClick}
+                onSave={this.handleSave}
             />
         );
     }

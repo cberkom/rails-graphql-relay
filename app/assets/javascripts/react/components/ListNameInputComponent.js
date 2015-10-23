@@ -20,7 +20,7 @@ export default class ListEdit extends React.Component {
     onKeyDown = (e) => {
         if (this.props.onCancel && e.keyCode === keycode.codes.esc) {
             this.props.onCancel();
-        }    else if (e.keyCode === keycode.codes.enter) {
+        } else if (e.keyCode === keycode.codes.enter) {
             this.commitChanges();
         }
     };

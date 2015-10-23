@@ -1,17 +1,8 @@
 import Relay from 'react-relay';
 
 export default class EditListMutation extends Relay.Mutation {
-    //static fragments = {
-    //    list: () => Relay.QL`
-    //      fragment on List {
-    //        id,
-    //        name
-    //    }
-    //     `
-    //};
-
     getMutation() {
-        return Relay.QL`mutation{editList}`;
+        return Relay.QL`mutation{EditList}`;
     }
 
     getFatQuery() {
@@ -26,7 +17,6 @@ export default class EditListMutation extends Relay.Mutation {
     }
 
     getConfigs() {
-        debugger;
         return [{
             type: 'FIELDS_CHANGE',
             fieldIDs: {

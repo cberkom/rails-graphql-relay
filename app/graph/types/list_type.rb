@@ -7,6 +7,7 @@ ListType = GraphQL::ObjectType.define do
   field :id, field: GraphQL::Relay::GlobalIdField.new('List')
   field :name, types.String
 end
+<<<<<<< HEAD:app/graph/list_type.rb
 
 EditListMutation = GraphQL::Relay::Mutation.define do
   name "EditList"
@@ -34,3 +35,5 @@ AddListMutation = GraphQL::Relay::Mutation.define do
     {list: list}
   }
 end
+=======
+>>>>>>> 8fd04c7ac80b73002b54cb407dad2f252ab739eb:app/graph/types/list_type.rb

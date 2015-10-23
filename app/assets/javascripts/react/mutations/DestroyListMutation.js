@@ -1,32 +1,32 @@
 import Relay from 'react-relay';
 
-export default class RemoveListMutation extends Relay.Mutation {
+export default class DestroyListMutation extends Relay.Mutation {
     static fragments = {
             // WIDGET: Mark complete as optional.
             list: () => Relay.QL`
-            fragment on List {
-                id
-            }
+                fragment on List {
+                    id
+                }
             `,
     };
 
     getMutation() {
-        return Relay.QL`mutation{removeList}`;
+        return Relay.QL`mutation{DestroyList}`;
     }
 
     getFatQuery() {
         return Relay.QL`
-          fragment on RemoveListPayload {
-           list,
+            fragment on DestroyListPayload {
+            list,
         }
-        `;
+    `;
     }
 
     getConfigs() {
         return [{
             type: 'NODE_DELETE',
             connectionName: 'lists',
-            deletedIDFieldName: 'destroyListId'
+            deletedIDFieldName: 'DestroyListId'
         }];
     }
 
