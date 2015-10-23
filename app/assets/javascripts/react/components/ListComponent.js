@@ -33,14 +33,13 @@ export class List extends React.Component {
         this.setEditMode(false);
     };
 
-    onSaveClick = () => {
+    handleSave = (name) => {
         const {list} = this.props;
 
         this.setEditMode(false);
         Relay.Store.update(
             new EditListMutation({list, name})
         );
-        debugger;
     };
 
     setEditMode(isEditing) {
@@ -65,7 +64,7 @@ export class List extends React.Component {
                 initialValue={this.props.list.name}
                 onCanvel={this.onCancelClick}
                 onDelete={this.onDestroyClick}
-                onSave={this.onSaveClick}
+                onSave={this.handleSave}
             />
         );
     }
