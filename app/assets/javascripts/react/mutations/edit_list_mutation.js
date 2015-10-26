@@ -9,6 +9,7 @@ export default class EditListMutation extends Relay.Mutation {
         return Relay.QL`
           fragment on EditListPayload {
             list {
+                id,
                 name
             }
         }

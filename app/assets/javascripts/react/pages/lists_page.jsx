@@ -3,6 +3,7 @@ import Relay from 'react-relay';
 import 'babel-core/polyfill';
 
 import {Link} from 'react-router';
+
 import * as ListComponent from 'react/components/list_component';
 import ListNameInput from 'react/components/list_name_input_component';
 import * as EditListMutation from 'react/mutations/edit_list_mutation';
@@ -14,6 +15,7 @@ class ListList extends React.Component {
     handleSave = (name) => {
         Relay.Store.update(
             new CreateListMutation({name})
+
         );
     };
 

@@ -13,3 +13,33 @@ ListType = GraphQL::ObjectType.define do
     }
   end
 end
+<<<<<<< HEAD:app/graph/list_type.rb
+
+EditListMutation = GraphQL::Relay::Mutation.define do
+  name "EditList"
+
+  input_field :listName, !types.String
+
+  return_field :list, ListType
+
+  resolve -> (inputs, ctx) {
+    list = ListType
+    {list: list}
+  }
+end
+
+
+AddListMutation = GraphQL::Relay::Mutation.define do
+  name "AddList"
+
+  input_field :listName, !types.String
+
+  return_field :list, ListType
+
+  resolve -> (inputs, ctx) {
+    list = ListType
+    {list: list}
+  }
+end
+=======
+>>>>>>> 8fd04c7ac80b73002b54cb407dad2f252ab739eb:app/graph/types/list_type.rb
