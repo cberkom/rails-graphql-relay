@@ -1,7 +1,7 @@
 import React from 'react';
 import keycode from 'keycode';
 
-export default class ListNameInput extends React.Component {
+export default class ListItemTextInput extends React.Component {
     static propTypes = {
         initialValue: React.PropTypes.string,
         onCancel: React.PropTypes.func,
@@ -44,11 +44,11 @@ export default class ListNameInput extends React.Component {
     render() {
         return (
             <input
-            {...this.props}
-            onKeyDown={this.onKeyDown}
-            onChange={this.onChange}
-            value={this.state.name}
-            />
+                {...this.props}
+                onKeyDown={this.onKeyDown}
+                onChange={this.onChange}
+                value={this.state.name}
+                />
         );
     }
 }

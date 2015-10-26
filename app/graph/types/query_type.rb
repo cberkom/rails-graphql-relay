@@ -5,19 +5,11 @@ QueryType = GraphQL::ObjectType.define do
 
   field :node, field: NodeIdentification.field
 
-  field :viewer, UserType do
+  field :root, RootLevelType do
+    resolve -> (obj, args, ctx) { RootLevel::STATIC }
+  end
+
+  field :current_user, UserType do
     resolve -> (obj, args, ctx) { User.first }
-  end
-
-  connection :lists, ListType.connection_type do
-    resolve ->(object, args, ctx){
-      List.all
-    }
-  end
-
-  connection :users, UserType.connection_type do
-    resolve ->(object, args, ctx){
-      User.all
-    }
   end
 end

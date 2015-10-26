@@ -8,7 +8,6 @@ import EditListMutation from 'react/mutations/edit_list_mutation';
 
 import ListNameInput from './list_name_input_component';
 
-
 export class List extends React.Component {
     static propTypes = {
         list: React.PropTypes.object.isRequired

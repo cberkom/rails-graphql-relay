@@ -3,20 +3,53 @@ import Relay from 'react-relay';
 import 'babel-core/polyfill';
 
 import {Link} from 'react-router';
+import * as ListItem from 'react/components/list_item_component';
+import  ListNameInput from 'react/components/list_name_input_component';
 
 export class List extends React.Component {
+
+    _handleScrollLoad() {
+        this.props.setVariables({
+            count: this.props.relay.variables.count + 10
+        });
+    }
+
+    handleSave = (name) => {
+        Relay.Store.update(
+            new CreateItemMutation({name})
+        );
+    };
+
+
+    renderListItems() {
+        var {list} = this.props;
+        return list.items.edges.map(({node}) =>
+                <ListItem
+                    key={node.id}
+                    item={node}
+                    name={node.name}
+                    body={node.body}
+                    />
+        );
+    }
+
     render() {
         var {list} = this.props;
         return (
-            <div>
-                <h1>List {list.name}</h1>
+            <section className="lists">
                 <div>
-                    {list.id}
+                    <h1>{list.name}</h1>
+                    <ListNameInput
+                        className="new-list"
+                        autofocus
+                        placeholder="What do you have to do?"
+                        onSave={this.handleSave}
+                        />
+                    <ul className="list">
+                        {this.renderListItems()}
+                    </ul>
                 </div>
-                <div>
-                    <Link to="/">Home</Link>
-                </div>
-            </div>
+            </section>
         );
     }
 }
@@ -32,11 +65,23 @@ export const Queries = {
 };
 
 export const RelayContainer = Relay.createContainer(List, {
+    initialVariables: {
+        count: 3                             /* default to 3 stories */
+    },
     fragments: {
         list: () => Relay.QL`
           fragment on List {
             id,
             name,
+            items(first: $count) {
+              edges {
+                node {
+                   id,
+                   name,
+                   body
+                }
+              }
+            },
           }
         `,
     },

@@ -44,7 +44,7 @@ input[type="checkbox"] {
   display: none;
 }
 
-.todoapp {
+.lists {
   background: #fff;
   margin: 130px 0 40px 0;
   position: relative;
@@ -52,25 +52,25 @@ input[type="checkbox"] {
   0 25px 50px 0 rgba(0, 0, 0, 0.1);
 }
 
-.todoapp input::-webkit-input-placeholder {
+.lists input::-webkit-input-placeholder {
   font-style: italic;
   font-weight: 300;
   color: #e6e6e6;
 }
 
-.todoapp input::-moz-placeholder {
+.lists input::-moz-placeholder {
   font-style: italic;
   font-weight: 300;
   color: #e6e6e6;
 }
 
-.todoapp input::input-placeholder {
+.lists input::input-placeholder {
   font-style: italic;
   font-weight: 300;
   color: #e6e6e6;
 }
 
-.todoapp h1 {
+.lists h1 {
   position: absolute;
   top: -155px;
   width: 100%;
@@ -83,28 +83,26 @@ input[type="checkbox"] {
   text-rendering: optimizeLegibility;
 }
 
-.new-todo,
+.new-list,
 .edit {
   position: relative;
   margin: 0;
-  width: 100%;
+  width: 98%;
   font-size: 24px;
   font-family: inherit;
   font-weight: inherit;
   line-height: 1.4em;
   border: 0;
   outline: none;
-  color: inherit;
+  color: #B7B6B6;
   padding: 6px;
   border: 1px solid #999;
-  box-shadow: inset 0 -1px 5px 0 rgba(0, 0, 0, 0.2);
-  box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   -moz-font-smoothing: antialiased;
   font-smoothing: antialiased;
 }
 
-.new-todo {
+.new-list {
   padding: 16px 16px 16px 60px;
   border: none;
   background: rgba(0, 0, 0, 0.003);
@@ -154,7 +152,7 @@ label[for='toggle-all'] {
   border-bottom: 1px solid #ededed;
   height: 40px;
   line-height: 40px;
-
+  padding: 0 20px;
 }
 
 .list li:last-child {

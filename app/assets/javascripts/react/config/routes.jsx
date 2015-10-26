@@ -44,6 +44,7 @@ export default function(){
                     />
                 <Route
                     name="list"
+                    queryParams={['count']}
                     path="lists/:id"
                     component={ListPage.RelayContainer}
                     queries={ListPage.Queries}

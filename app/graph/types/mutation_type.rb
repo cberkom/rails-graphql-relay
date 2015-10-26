@@ -3,4 +3,5 @@ MutationType = GraphQL::ObjectType.define do
 
   field :EditList, field: ListMutations::Edit.field
   field :DestroyList, field: ListMutations::Destroy.field
+  field :CreateList, field: ListMutations::Create.field
 end

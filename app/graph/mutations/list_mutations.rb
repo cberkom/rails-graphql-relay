@@ -6,8 +6,8 @@ module ListMutations
     return_field :list, ListType
 
     resolve -> (inputs, ctx) {
-      list = List.create(inputs)
-      { list: list }
+      list = List.create({name: inputs[:name]})
+      { list: list}
     }
   end
 
@@ -30,12 +30,12 @@ module ListMutations
     name "DestroyList"
 
     input_field :id, !types.ID
-    return_field :list, ListType
+    return_field :deletedId, !types.ID
 
     resolve -> (inputs, ctx) {
       list = NodeIdentification.object_from_id_proc.call(inputs[:id])
       list.destroy
-      { list: list }
+      { deletedId: inputs[:id] }
     }
   end
 end

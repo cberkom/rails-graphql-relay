@@ -1,50 +1,41 @@
 import Relay from 'react-relay';
 
-export default class CreateListMutation extends Relay.Mutation {
+export default class CreateListMutation extends Relay.Mutation  {
 
     getMutation() {
-        return Relay.QL`mutation{createList}`;
+        return Relay.QL`mutation{CreateList}`;
     }
 
+    getVariables() {
+        return {
+            name: this.props.name
+        };
+    }
     getFatQuery() {
         return Relay.QL`
           fragment on CreateListPayload {
-            listEdge
+            list
         }
         `;
     }
 
     getConfigs() {
-        return [
-            {
-                type: 'RANGE_ADD',
-                connectionName: 'list',
-                edgeName: 'listEdge',
-                rangeBehaviors: {
-                    '': 'append',
-                    'status(any)': 'append',
-                    'status(active)': 'append',
-                    'status(completed)': null
-                }
+        return [{
+            type: 'FIELDS_CHANGE',
+            fieldIDs: {
+                list: this.props.list
             }
-        ];
+        }];
     }
 
-    getVariables() {
-        return {
-            text: this.props.name
-        };
-    }
+
 
     getOptimisticResponse() {
-        const {viewer, text} = this.props;
+        const {name} = this.props.name;
 
         return {
-            listEdge: {
-                node: {
-                    complete: false,
-                    name
-                }
+            list: {
+                name: name
             }
         };
     }

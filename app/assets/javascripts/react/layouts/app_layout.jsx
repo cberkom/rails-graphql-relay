@@ -1,10 +1,11 @@
 import React from 'react';
+import {Link} from 'react-router';
 
 export const Component = React.createClass({
     render() {
         return (
             <div className="App">
-            Navigation Up in Here
+                <Link to="/">Home</Link>
                 {this.props.children}
             </div>
         )
