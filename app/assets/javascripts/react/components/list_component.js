@@ -3,10 +3,10 @@ import Relay from 'react-relay';
 import {Link} from 'react-router';
 import classNames from 'classnames';
 
-import DestroyListMutation from 'react/mutations/DestroyListMutation';
-import EditListMutation from 'react/mutations/EditListMutation';
+import DestroyListMutation from 'react/mutations/destroy_list_mutation';
+import EditListMutation from 'react/mutations/edit_list_mutation';
 
-import ListNameInput from './ListNameInputComponent';
+import ListNameInput from './list_name_input_component';
 
 
 export class List extends React.Component {

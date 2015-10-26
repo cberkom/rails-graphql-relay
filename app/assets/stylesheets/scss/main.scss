@@ -170,24 +170,8 @@ label[for='toggle-all'] {
   a {
     text-decoration: none;
     color: inherit;
-    &:after {
-      transition: opacity 0.5s ease;
-      content: '';
-      display: none;
-      position: absolute;
-      left: 0;
-      right: 0;
-      top: 50%;
-      height: 50%;
-      width: 50%;
-      background: #A7B5B4;
-      opacity: .5;
-      pointer-events: none;
-    }
     &:hover {
-      &:after {
-        display: block;
-      }
+      cursor: pointer;
     }
   }
 }

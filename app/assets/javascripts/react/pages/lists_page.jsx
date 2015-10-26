@@ -3,9 +3,10 @@ import Relay from 'react-relay';
 import 'babel-core/polyfill';
 
 import {Link} from 'react-router';
-import * as ListComponent from 'react/components/ListComponent';
-import * as ListNameInputComponent from 'react/components/ListNameInputComponent';
-import * as EditListMutation from 'react/mutations/EditListMutation';
+import * as ListComponent from 'react/components/list_component';
+import * as ListNameInputComponent from 'react/components/list_name_input_component';
+import * as EditListMutation from 'react/mutations/edit_list_mutation';
+import * as DestroyListMutation from 'react/mutations/destroy_list_mutation';
 
 class ListList extends React.Component {
 

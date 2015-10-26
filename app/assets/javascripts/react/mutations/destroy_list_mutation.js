@@ -1,42 +1,39 @@
 import Relay from 'react-relay';
 
 export default class DestroyListMutation extends Relay.Mutation {
-    static fragments = {
-            // WIDGET: Mark complete as optional.
-            list: () => Relay.QL`
-                fragment on List {
-                    id
-                }
-            `,
-    };
 
     getMutation() {
+        debugger;
         return Relay.QL`mutation{DestroyList}`;
     }
 
     getFatQuery() {
+        debugger;
         return Relay.QL`
             fragment on DestroyListPayload {
-            list,
+                list
         }
     `;
     }
 
     getConfigs() {
+        debugger;
         return [{
             type: 'NODE_DELETE',
             connectionName: 'lists',
-            deletedIDFieldName: 'DestroyListId'
+            deletedIDFieldName: 'list'
         }];
     }
 
     getVariables() {
+        debugger;
         return {
             id: this.props.list.id
         };
     }
 
     getOptimisticResponse() {
+        debugger;
         const {list} = this.props;
 
         return {
