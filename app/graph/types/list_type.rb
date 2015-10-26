@@ -14,30 +14,4 @@ ListType = GraphQL::ObjectType.define do
   end
 end
 
-EditListMutation = GraphQL::Relay::Mutation.define do
-  name "EditList"
-
-  input_field :listName, !types.String
-
-  return_field :list, ListType
-
-  resolve -> (inputs, ctx) {
-    list = ListType
-    {list: list}
-  }
-end
-
-
-AddListMutation = GraphQL::Relay::Mutation.define do
-  name "AddList"
-
-  input_field :listName, !types.String
-
-  return_field :list, ListType
-
-  resolve -> (inputs, ctx) {
-    list = ListType
-    {list: list}
-  }
-end
 

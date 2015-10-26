@@ -11,6 +11,7 @@ export default class CreateListMutation extends Relay.Mutation  {
             name: this.props.name
         };
     }
+
     getFatQuery() {
         return Relay.QL`
           fragment on CreateListPayload {

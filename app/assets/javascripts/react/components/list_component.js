@@ -10,6 +10,7 @@ import ListNameInput from './list_name_input_component';
 
 export class List extends React.Component {
     static propTypes = {
+        root: React.PropTypes.object.isRequired,
         list: React.PropTypes.object.isRequired
     };
     constructor(props, context) {
@@ -46,9 +47,9 @@ export class List extends React.Component {
     }
 
     removeList() {
-        const {list} = this.props;
+        const {root, list} = this.props;
         Relay.Store.update(
-            new DestroyListMutation({list})
+            new DestroyListMutation({root, list})
         );
     }
 
@@ -102,6 +103,11 @@ export const RelayContainer = Relay.createContainer(List, {
         isEditing: false
     },
     fragments: {
+        root: () => Relay.QL`
+            fragment on RootLevel {
+             ${DestroyListMutation.getFragment('root')}
+            }
+        `,
         list: () => Relay.QL`
         fragment on List {
             id,

@@ -31,6 +31,7 @@ module ListMutations
 
     input_field :id, !types.ID
     return_field :deletedId, !types.ID
+    return_field :root, RootLevelType
 
     resolve -> (inputs, ctx) {
       list = NodeIdentification.object_from_id_proc.call(inputs[:id])

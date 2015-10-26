@@ -8,6 +8,9 @@ export default class DestroyListMutation extends Relay.Mutation {
     getFatQuery() {
         return Relay.QL`
            fragment on DestroyListPayload {
+            root {
+              lists
+            },
             deletedId
            }
            `;
@@ -15,10 +18,10 @@ export default class DestroyListMutation extends Relay.Mutation {
 
     getConfigs() {
         return [{
-            type: 'RANGE_DELETE',
-            connectionName: 'lists',
-            parentId: 'root',
+            type: 'NODE_DELETE',
             parentName: 'root',
+            parentID: this.props.root.id,
+            connectionName: 'lists',
             deletedIDFieldName: 'deletedId'
         }];
     }
@@ -30,7 +33,8 @@ export default class DestroyListMutation extends Relay.Mutation {
     }
 
     getOptimisticResponse() {
-        const {list} = this.props;
+        const {root, list} = this.props;
+        const rootPayload = {id: root.id};
 
         return {
             deletedId: list.id
