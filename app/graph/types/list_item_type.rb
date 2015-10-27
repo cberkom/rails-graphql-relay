@@ -1,5 +1,5 @@
 ListItemType = GraphQL::ObjectType.define do
-  name 'List Item'
+  name 'ListItem'
   description 'A list item'
 
   interfaces [NodeIdentification.interface]
