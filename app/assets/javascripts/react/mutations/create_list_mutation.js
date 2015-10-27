@@ -9,22 +9,16 @@ export default class CreateListMutation extends Relay.Mutation  {
     getFatQuery() {
         return Relay.QL`
           fragment on CreateListPayload {
+            listEdge,
             root {
                 lists
-            },
-            listEdge
+            }
         }
         `;
     }
 
     getConfigs() {
         return [
-            {
-                type: 'FIELDS_CHANGE',
-                fieldIDs: {
-                    root: this.props.root.id
-                }
-            },
             {
                 type: 'RANGE_ADD',
                 parentName: 'root',
