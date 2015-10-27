@@ -27,9 +27,7 @@ export default class CreateListMutation extends Relay.Mutation  {
                 edgeName: 'listEdge',
                 rangeBehaviors: {
                     '': 'append',
-                    'status(any)': 'append',
-                    'status(active)': 'append',
-                    'status(completed)': null
+                    'order(-id)': 'prepend'
                 }
 
 
@@ -49,7 +47,7 @@ export default class CreateListMutation extends Relay.Mutation  {
         return {
             listEdge: {
                 node: {
-                    name
+                    name: this.props.name
                 }
             }
         };
