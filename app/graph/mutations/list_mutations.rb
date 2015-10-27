@@ -44,7 +44,7 @@ module ListMutations
     resolve -> (inputs, ctx) {
       list = NodeIdentification.object_from_id_proc.call(inputs[:id])
       list.destroy
-      { deletedId: inputs[:id] }
+      { root: RootLevel::STATIC, deletedId: inputs[:id] }
     }
   end
 end
