@@ -16,21 +16,35 @@ import CreateListMutation from 'react/mutations/create_list_mutation';
 class ListList extends React.Component {
 
     componentDidMount() {
+        var _this = this;
         if (ExecutionEnvironment.canUseDOM) {
-            var _this = this;
-            $(document).scroll('scroll', function(){
+            $(document).scroll('scroll', function () {
                 _this._handleScrollLoad.call(_this)
             });
         }
+        this._handleScrollLoad()
+    }
+
+    componentDidUpdate(prevProps) {
+        if (prevProps.root.lists.edges != this.props.root.lists.edges) {
+            this._handleScrollLoad()
+        }
+    }
+
+    _lastListItemVisible() {
+        var lastList = $(".list li").last();
+        return visible.inViewport(lastList);
+    }
+
+    _loadMore() {
+        this.props.relay.setVariables({
+            count: this.props.relay.variables.count + 10
+        });
     }
 
     _handleScrollLoad() {
-        var lastList = $(".list li").last();
-        var isVisible = visible.inViewport(lastList);
-        if (isVisible) {
-            this.props.relay.setVariables({
-                count: this.props.relay.variables.count + 10
-            });
+        if (this._lastListItemVisible()) {
+            this._loadMore();
         }
     }
 
@@ -39,7 +53,6 @@ class ListList extends React.Component {
 
         Relay.Store.update(
             new CreateListMutation({root, name})
-
         );
     };
 
@@ -48,12 +61,12 @@ class ListList extends React.Component {
         const {root} = this.props;
 
         return lists.edges.map(({node}) =>
-            <ListComponent.List
-                key={node.id}
-                list={node}
-                name={node.name}
-                root={root}
-            />
+                <ListComponent.List
+                    key={node.id}
+                    list={node}
+                    name={node.name}
+                    root={root}
+                    />
         );
     }
 
@@ -63,11 +76,11 @@ class ListList extends React.Component {
                 <div>
                     <h1>Todo Lists</h1>
                     <ListNameInput
-                    className="new-list"
-                    autofocus
-                    placeholder="What's your list called?"
-                    onSave={this.handleSave}
-                    />
+                        className="new-list"
+                        autofocus
+                        placeholder="What's your list called?"
+                        onSave={this.handleSave}
+                        />
                     <ul className="list">
                         {this.renderLists()}
                     </ul>
