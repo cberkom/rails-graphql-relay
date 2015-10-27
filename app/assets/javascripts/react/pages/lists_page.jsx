@@ -33,7 +33,7 @@ class ListList extends React.Component {
 
     _lastListItemVisible() {
         var lastList = $(".list li").last();
-        return visible.inViewport(lastList);
+        return lastList[0] && visible.inViewport(lastList);
     }
 
     _loadMore() {
