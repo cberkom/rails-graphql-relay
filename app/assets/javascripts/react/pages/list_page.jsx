@@ -3,32 +3,30 @@ import Relay from 'react-relay';
 import 'babel-core/polyfill';
 
 import {Link} from 'react-router';
-import * as ListItem from 'react/components/list_item_component';
-import  ListNameInput from 'react/components/list_name_input_component';
+import * as Item from 'react/components/item_component';
+import  TextInput from 'react/components/text_input_component';
+import CreateItemMutation from 'react/mutations/create_item_mutation';
 
 export class List extends React.Component {
 
-    _handleScrollLoad() {
-        this.props.setVariables({
-            count: this.props.relay.variables.count + 10
-        });
-    }
 
     handleSave = (name) => {
+        const {list} = this.props;
+
         Relay.Store.update(
-            new CreateItemMutation({name})
+            new CreateItemMutation({list, name})
         );
     };
 
-
-    renderListItems() {
+    renderItems() {
         var {list} = this.props;
         return list.items.edges.map(({node}) =>
-                <ListItem
+                <Item.Component
                     key={node.id}
                     item={node}
                     name={node.name}
                     body={node.body}
+                    list={list}
                     />
         );
     }
@@ -36,18 +34,23 @@ export class List extends React.Component {
     render() {
         var {list} = this.props;
         return (
-            <section className="lists">
-                <div>
-                    <h1>{list.name}</h1>
-                    <ListNameInput
+            <section className="modal-wrapper open">
+                <div className="modal-content open" >
+                    <div className="modal-header">
+                        <h1>{list.name}</h1>
+                        <div className="close" onClick={this.handleClose}>x</div>
+                    </div>
+                <div className="modal-body">
+                    <TextInput
                         className="new-list"
                         autofocus
                         placeholder="What do you have to do?"
                         onSave={this.handleSave}
                         />
                     <ul className="list">
-                        {this.renderListItems()}
+                        {this.renderItems()}
                     </ul>
+                  </div>
                 </div>
             </section>
         );
@@ -73,7 +76,7 @@ export const RelayContainer = Relay.createContainer(List, {
           fragment on List {
             id,
             name,
-            items(first: $count) {
+            items(first: $count, order: "-id") {
               edges {
                 node {
                    id,
