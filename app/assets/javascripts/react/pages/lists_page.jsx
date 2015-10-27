@@ -108,7 +108,7 @@ export const RelayContainer = Relay.createContainer(ListList, {
         root: () => Relay.QL`
             fragment on RootLevel {
                 id,
-                lists(first: $count) {
+                lists(first: $count, order: "-id") {
                     edges {
                         node {
                             id,
