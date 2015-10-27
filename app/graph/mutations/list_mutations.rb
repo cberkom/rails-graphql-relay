@@ -3,11 +3,18 @@ module ListMutations
     name "CreateList"
 
     input_field :name, !types.String
+
     return_field :listEdge, ListType.edge_type
     return_field :root, RootLevelType
 
     resolve -> (inputs, ctx) {
-      # list = List.create({name: inputs[:name]})
+      root = RootLevel::STATIC
+      list = List.create({name: inputs[:name]})
+
+      connection = GraphQL::Relay::RelationConnection.new(root, {})
+      edge = GraphQL::Relay::Edge.new(list, connection)
+
+      { root: root, listEdge: edge }
     }
   end
 
@@ -16,6 +23,7 @@ module ListMutations
 
     input_field :id, !types.ID
     input_field :name, !types.String
+
     return_field :list, ListType
 
     resolve -> (inputs, ctx) {
