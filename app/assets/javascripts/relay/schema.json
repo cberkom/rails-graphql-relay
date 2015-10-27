@@ -106,7 +106,7 @@
           "possibleTypes": [
             {
               "kind": "OBJECT",
-              "name": "List Item",
+              "name": "ListItem",
               "ofType": null
             },
             {
@@ -138,7 +138,7 @@
         },
         {
           "kind": "OBJECT",
-          "name": "List Item",
+          "name": "ListItem",
           "description": "A list item",
           "fields": [
             {
@@ -303,7 +303,7 @@
               ],
               "type": {
                 "kind": "OBJECT",
-                "name": "List ItemConnection",
+                "name": "ListItemConnection",
                 "ofType": null
               },
               "isDeprecated": false,
@@ -323,7 +323,7 @@
         },
         {
           "kind": "OBJECT",
-          "name": "List ItemConnection",
+          "name": "ListItemConnection",
           "description": null,
           "fields": [
             {
@@ -337,7 +337,7 @@
                 "name": "List",
                 "ofType": {
                   "kind": "OBJECT",
-                  "name": "List ItemEdge",
+                  "name": "ListItemEdge",
                   "ofType": null
                 }
               },
@@ -368,7 +368,7 @@
         },
         {
           "kind": "OBJECT",
-          "name": "List ItemEdge",
+          "name": "ListItemEdge",
           "description": null,
           "fields": [
             {
@@ -379,7 +379,7 @@
               ],
               "type": {
                 "kind": "OBJECT",
-                "name": "List Item",
+                "name": "ListItem",
                 "ofType": null
               },
               "isDeprecated": false,
