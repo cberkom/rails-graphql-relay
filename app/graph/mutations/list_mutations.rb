@@ -3,11 +3,11 @@ module ListMutations
     name "CreateList"
 
     input_field :name, !types.String
-    return_field :list, ListType
+    return_field :listEdge, ListType.edge_type
+    return_field :root, RootLevelType
 
     resolve -> (inputs, ctx) {
-      list = List.create({name: inputs[:name]})
-      { list: list}
+      # list = List.create({name: inputs[:name]})
     }
   end
 

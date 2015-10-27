@@ -1,6 +1,9 @@
 import React from 'react';
 import Relay from 'react-relay';
+import ExecutionEnvironment from 'exenv';
 import 'babel-core/polyfill';
+import $ from 'jquery';
+var visible = require('visible-element')($);
 
 import {Link} from 'react-router';
 
@@ -12,9 +15,30 @@ import CreateListMutation from 'react/mutations/create_list_mutation';
 
 class ListList extends React.Component {
 
+    componentDidMount() {
+        if (ExecutionEnvironment.canUseDOM) {
+            var _this = this;
+            $(document).scroll('scroll', function(){
+                _this._handleScrollLoad.call(_this)
+            });
+        }
+    }
+
+    _handleScrollLoad() {
+        var lastList = $(".list li").last();
+        var isVisible = visible.inViewport(lastList);
+        if (isVisible) {
+            this.props.relay.setVariables({
+                count: this.props.relay.variables.count + 10
+            });
+        }
+    }
+
     handleSave = (name) => {
+        const {root} = this.props;
+
         Relay.Store.update(
-            new CreateListMutation({name})
+            new CreateListMutation({root, name})
 
         );
     };
@@ -64,10 +88,14 @@ export const Queries = {
 };
 
 export const RelayContainer = Relay.createContainer(ListList, {
+    initialVariables: {
+        count: 10
+    },
     fragments: {
         root: () => Relay.QL`
             fragment on RootLevel {
-                lists(first: 10) {
+                id,
+                lists(first: $count) {
                     edges {
                         node {
                             id,

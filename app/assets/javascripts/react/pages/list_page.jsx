@@ -66,7 +66,7 @@ export const Queries = {
 
 export const RelayContainer = Relay.createContainer(List, {
     initialVariables: {
-        count: 3                             /* default to 3 stories */
+        count: 10
     },
     fragments: {
         list: () => Relay.QL`

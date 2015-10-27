@@ -118,6 +118,11 @@
               "kind": "OBJECT",
               "name": "User",
               "ofType": null
+            },
+            {
+              "kind": "OBJECT",
+              "name": "RootLevel",
+              "ofType": null
             }
           ]
         },
@@ -711,6 +716,24 @@
           "description": "Unassociated root object queries",
           "fields": [
             {
+              "name": "id",
+              "description": null,
+              "args": [
+
+              ],
+              "type": {
+                "kind": "NON_NULL",
+                "name": "Non-Null",
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "ID",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "lists",
               "description": null,
               "args": [
@@ -839,7 +862,11 @@
           ],
           "inputFields": null,
           "interfaces": [
-
+            {
+              "kind": "INTERFACE",
+              "name": "Node",
+              "ofType": null
+            }
           ],
           "enumValues": null,
           "possibleTypes": null
@@ -1252,14 +1279,28 @@
               "deprecationReason": null
             },
             {
-              "name": "list",
+              "name": "listEdge",
               "description": null,
               "args": [
 
               ],
               "type": {
                 "kind": "OBJECT",
-                "name": "List",
+                "name": "ListEdge",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "root",
+              "description": null,
+              "args": [
+
+              ],
+              "type": {
+                "kind": "OBJECT",
+                "name": "RootLevel",
                 "ofType": null
               },
               "isDeprecated": false,
