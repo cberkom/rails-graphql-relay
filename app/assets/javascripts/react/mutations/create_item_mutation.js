@@ -33,18 +33,8 @@ export default class CreateItemMutation extends Relay.Mutation  {
                 edgeName: 'itemEdge',
                 rangeBehaviors: {
                     '': 'append',
-                    'status(any)': 'append',
-                    'status(active)': 'append',
-                    'status(completed)': null
+                    'order(-id)': 'prepend'
                 }
-            },
-            {
-                type: 'REQUIRED_CHILDREN',
-                children: [Relay.QL`
-                    fragment on CreateListPayload {
-                        itemEdge
-                    }
-                 `],
             }
         ];
     }

@@ -67,7 +67,9 @@ export class Component extends React.Component {
         const {isEditing} = this.state;
 
         return (
-           <li className={classNames>{this.props.name}</li>
+           <li>
+               {this.props.name}
+           </li>
         );
     }
 }

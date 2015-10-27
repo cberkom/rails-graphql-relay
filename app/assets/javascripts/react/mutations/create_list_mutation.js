@@ -9,22 +9,16 @@ export default class CreateListMutation extends Relay.Mutation  {
     getFatQuery() {
         return Relay.QL`
           fragment on CreateListPayload {
+            listEdge,
             root {
                 lists
-            },
-            listEdge
+            }
         }
         `;
     }
 
     getConfigs() {
         return [
-            {
-                type: 'FIELDS_CHANGE',
-                fieldIDs: {
-                    root: this.props.root.id
-                }
-            },
             {
                 type: 'RANGE_ADD',
                 parentName: 'root',
@@ -33,16 +27,8 @@ export default class CreateListMutation extends Relay.Mutation  {
                 edgeName: 'listEdge',
                 rangeBehaviors: {
                     '': 'append',
-                    'orderby(newest)' : 'prepend'
+                    'order(-id)': 'prepend'
                 }
-            },
-            {
-                type: 'REQUIRED_CHILDREN',
-                children: [Relay.QL`
-                    fragment on CreateListPayload {
-                        listEdge
-                    }
-                 `],
             }
         ];
     }
@@ -62,7 +48,7 @@ export default class CreateListMutation extends Relay.Mutation  {
             },
             listEdge: {
                 node: {
-                    name: name
+                    name: this.props.name
                 }
             }
         };

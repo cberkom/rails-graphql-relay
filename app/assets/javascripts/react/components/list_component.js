@@ -18,7 +18,8 @@ export class List extends React.Component {
         super(props, context);
 
         this.state = {
-            isEditing: false
+            isEditing: false,
+            modalOpen: false
         };
     }
 
@@ -70,6 +71,18 @@ export class List extends React.Component {
         );
     }
 
+    renderModal() {
+        if (!this.state.modalOpen) {
+            return null;
+        }
+
+        return (
+            <div class="modal">
+                {this.props.children}
+            </div>
+        );
+    }
+
     render() {
         const {name} = this.props.name;
         const {isEditing} = this.state;
@@ -91,6 +104,7 @@ export class List extends React.Component {
                         </svg>
                     </button>
                 </div>
+                {this.renderModal()}
                 {this.renderTextInput()}
             </li>
         );

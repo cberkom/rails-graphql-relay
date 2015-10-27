@@ -12,12 +12,3 @@ export const Component = React.createClass({
     }
 });
 
-//export const Container = Relay.createContainer(Component, {
-//    fragments: {
-//        root: () => Relay.QL`
-//            fragment on RootLevel {
-//                id
-//            }
-//        `
-//    }
-//})

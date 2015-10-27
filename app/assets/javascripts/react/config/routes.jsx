@@ -40,15 +40,15 @@ export default function(){
                     name="lists"
                     path="lists"
                     component={ListsPage.RelayContainer}
-                    queries={ListsPage.Queries}
+                    queries={ListsPage.Queries} >
+                    <Route
+                        name="list"
+                        queryParams={['count']}
+                        path=":id"
+                        component={ListPage.RelayContainer}
+                        queries={ListPage.Queries}
                     />
-                <Route
-                    name="list"
-                    queryParams={['count']}
-                    path="lists/:id"
-                    component={ListPage.RelayContainer}
-                    queries={ListPage.Queries}
-                />
+                </Route>
             </Route>
         </Router>,
         document.getElementById('root')
