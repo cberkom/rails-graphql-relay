@@ -25,18 +25,8 @@ export default () => {
             history={createHistory()}>
             <Route path="/" component={AppLayout}>
                 <IndexRoute component={HomePage} />
-                <Route
-                    name="lists"
-                    path="lists"
-                    component={ListsPage}
-                    queries={RootQuery}
-                >
-                    <Route
-                        name="list"
-                        path=":id"
-                        component={ListPage}
-                        queries={ListQuery}
-                    />
+                <Route name="lists" path="lists" component={ListsPage} queries={RootQuery}>
+                    <Route name="list" path=":id" component={ListPage} queries={ListQuery}/>
                 </Route>
             </Route>
         </Router>,
