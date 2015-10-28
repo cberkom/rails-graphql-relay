@@ -8,7 +8,7 @@ var visible = require('visible-element')($);
 import {Link} from 'react-router';
 
 import ListComponent from 'react/components/list_component';
-import ListNameInput from 'react/components/list_name_input_component';
+import TextInput from 'react/components/text_input_component';
 import EditListMutation from 'react/mutations/edit_list_mutation';
 import DestroyListMutation from 'react/mutations/destroy_list_mutation';
 import CreateListMutation from 'react/mutations/create_list_mutation';
@@ -81,7 +81,7 @@ class ListOfLists extends React.Component {
             <section className="lists">
                 <div>
                     <h1>Todo Lists</h1>
-                    <ListNameInput
+                    <TextInput
                         className="new-list"
                         autofocus
                         placeholder="What's your list called?"
@@ -98,13 +98,14 @@ class ListOfLists extends React.Component {
 
  const Container = Relay.createContainer(ListOfLists, {
     initialVariables: {
-        count: 10
+        count: 10,
+        order: "-id"
     },
     fragments: {
         root: () => Relay.QL`
             fragment on RootLevel {
                 id,
-                lists(first: $count, order: "-id") {
+                lists(first: $count, order: $order) {
                     edges {
                         node {
                             id,
@@ -113,9 +114,7 @@ class ListOfLists extends React.Component {
                     }
                 }
             }
-        `,
-
-
+        `
     }
 });
 export default Container

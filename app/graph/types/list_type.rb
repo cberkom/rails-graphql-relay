@@ -7,7 +7,7 @@ ListType = GraphQL::ObjectType.define do
   field :id, field: GraphQL::Relay::GlobalIdField.new('List')
   field :name, types.String
 
-  connection :items, ListItemType.connection_type do
+  connection :items, ItemType.connection_type do
     resolve ->(list, args, ctx){
       list.items
     }

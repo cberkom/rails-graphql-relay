@@ -29,8 +29,6 @@ export default class extends Relay.Mutation  {
                     '': 'append',
                     'order(-id)': 'prepend'
                 }
-
-
             }
         ];
     }
@@ -45,6 +43,9 @@ export default class extends Relay.Mutation  {
         const {root, name} = this.props;
 
         return {
+            root: {
+                id: root.id
+            },
             listEdge: {
                 node: {
                     name: this.props.name

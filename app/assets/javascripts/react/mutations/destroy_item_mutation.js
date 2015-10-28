@@ -1,20 +1,19 @@
 import Relay from 'react-relay';
 
-export default class extends Relay.Mutation  {
-
+export default class DestroyItemMutation extends Relay.Mutation {
     getMutation() {
-        return Relay.QL`mutation{CreateItem}`;
+        return Relay.QL`mutation{DestroyItem}`;
     }
 
     getFatQuery() {
         return Relay.QL`
-          fragment on CreateItemPayload {
-            itemEdge,
+           fragment on DestroyItemPayload {
             list {
                 items
-            }
-        }
-        `;
+            },
+            deletedId
+           }
+           `;
     }
 
     getConfigs() {
@@ -26,15 +25,11 @@ export default class extends Relay.Mutation  {
                 }
             },
             {
-                type: 'RANGE_ADD',
+                type: 'NODE_DELETE',
                 parentName: 'list',
                 parentID: this.props.list.id,
                 connectionName: 'items',
-                edgeName: 'itemEdge',
-                rangeBehaviors: {
-                    '': 'append',
-                    'order(-id)': 'prepend'
-                }
+                deletedIDFieldName: 'deletedId'
             }
         ];
     }
@@ -42,22 +37,17 @@ export default class extends Relay.Mutation  {
     getVariables() {
         return {
             list_id: this.props.list.id,
-            name: this.props.name
+            id: this.props.item.id
         };
     }
 
     getOptimisticResponse() {
-        const {list, name} = this.props;
+        const {list, item} = this.props;
+        const listPayload = {id: list.id};
 
         return {
-            list: {
-                id: list.id
-            },
-            itemEdge: {
-                node: {
-                    name: name
-                }
-            }
+            list: listPayload,
+            deletedId: item.id
         };
     }
 }

@@ -17,7 +17,9 @@ import CurrentUserQuery from '../queries/current_user_query';
 import RootQuery from '../queries/root_query';
 import NodeQuery from '../queries/node_query';
 
-export default function(){
+let mountNode = document.getElementById('root');
+
+export default () => {
     ReactDOM.render(
         <Router
             createElement={ReactRouterRelay.createElement}
@@ -39,6 +41,6 @@ export default function(){
                 </Route>
             </Route>
         </Router>,
-        document.getElementById('root')
+        mountNode
     );
 }

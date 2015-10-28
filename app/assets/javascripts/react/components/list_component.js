@@ -6,18 +6,20 @@ import classNames from 'classnames';
 import DestroyListMutation from 'react/mutations/destroy_list_mutation';
 import EditListMutation from 'react/mutations/edit_list_mutation';
 
-import ListNameInput from './list_name_input_component';
+import TextInput from './text_input_component';
 
 class List extends React.Component {
     static propTypes = {
         root: React.PropTypes.object.isRequired,
         list: React.PropTypes.object.isRequired
     };
+
     constructor(props, context) {
         super(props, context);
 
         this.state = {
-            isEditing: false
+            isEditing: false,
+            modalOpen: false
         };
     }
 
@@ -53,13 +55,13 @@ class List extends React.Component {
         );
     }
 
-    renderListNameInput() {
+    renderTextInput() {
         if (!this.state.isEditing) {
             return null;
         }
 
         return (
-            <ListNameInput
+            <TextInput
                 className="edit"
                 initialValue={this.props.list.name}
                 onCanvel={this.onCancelClick}
@@ -68,6 +70,8 @@ class List extends React.Component {
             />
         );
     }
+
+
     render() {
         const {list} = this.props;
         const {isEditing} = this.state;
@@ -83,8 +87,9 @@ class List extends React.Component {
                         </svg>
                     </button>
                 </div>
-                {this.renderListNameInput()}
+                {this.renderTextInput()}
             </li>
+
         );
     }
 }
