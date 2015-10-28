@@ -1,8 +1,8 @@
 import React from 'react';
 import Relay from 'react-relay';
 import 'babel-core/polyfill';
-
 import {Link} from 'react-router';
+
 import * as Item from 'react/components/item_component';
 import  TextInput from 'react/components/text_input_component';
 import CreateItemMutation from 'react/mutations/create_item_mutation';
@@ -34,26 +34,25 @@ export class List extends React.Component {
     render() {
         var {list} = this.props;
         return (
-            <section className="modal-wrapper open">
-                <div className="modal-content open" >
+            <div className="App">
+                <section className="modal">
                     <div className="modal-header">
-                        <h1>{list.name}</h1>
-                        <div className="close" onClick={this.handleClose}>x</div>
+                        <h2>{list.name}</h2>
+                        <Link className="close" to={`/lists`}>x</Link>
                     </div>
-                <div className="modal-body">
-                    <TextInput
-                        className="new-list"
-                        autofocus
-                        placeholder="What do you have to do?"
-                        onSave={this.handleSave}
-                        />
-                    <ul className="list">
-                        {this.renderItems()}
-                    </ul>
-                  </div>
-                </div>
-            </section>
-
+                    <div className="modal-body lists">
+                        <TextInput
+                            className="new-list"
+                            autofocus
+                            placeholder="What do you have to do?"
+                            onSave={this.handleSave}
+                            />
+                        <ul className="list">
+                            {this.renderItems()}
+                        </ul>
+                    </div>
+                </section>
+            </div>
 
         );
     }

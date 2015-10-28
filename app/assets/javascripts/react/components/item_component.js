@@ -3,6 +3,10 @@ import Relay from 'react-relay';
 import {Link} from 'react-router';
 import classNames from 'classnames';
 
+import DestroyItemMutation from 'react/mutations/destroy_item_mutation';
+import EditItemMutation from 'react/mutations/edit_item_mutation';
+
+import TextInput from './text_input_component';
 
 export class Component extends React.Component {
     static propTypes = {
@@ -23,7 +27,7 @@ export class Component extends React.Component {
     };
 
     onEditClick = () => {
-      this.setEditMode(false);
+      this.setEditMode(true);
     };
 
     handleSave = (name) => {
@@ -40,9 +44,9 @@ export class Component extends React.Component {
     }
 
     removeItem() {
-        const {root, item} = this.props;
+        const {list, item} = this.props;
         Relay.Store.update(
-            new DestroyItemMutation({root, item})
+            new DestroyItemMutation({list, item})
         );
     }
 
@@ -54,7 +58,7 @@ export class Component extends React.Component {
         return (
             <TextInput
                 className="edit"
-                initialValue={this.props.list.name}
+                initialValue={this.props.item.name}
                 onCancel={this.onCancelClick}
                 onDelete={this.onDestroyClick}
                 onSave={this.handleSave}
@@ -67,8 +71,21 @@ export class Component extends React.Component {
         const {isEditing} = this.state;
 
         return (
-           <li>
-               {this.props.name}
+           <li className={classNames({
+                editing: isEditing})
+           }>
+               <div className="view">
+                {this.props.name}
+                   <button className="destroy"
+                            onClick={this.onDestroyClick} />
+                   <button className="edit"
+                           onClick={this.onEditClick}>
+                       <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="15" height="15" data-icon="pencil" viewBox="0 0 8 8">
+                           <path d="M6 0l-1 1 2 2 1-1-2-2zm-2 2l-4 4v2h2l4-4-2-2z"/>
+                       </svg>
+                   </button>
+               </div>
+               {this.renderTextInput()}
            </li>
         );
     }

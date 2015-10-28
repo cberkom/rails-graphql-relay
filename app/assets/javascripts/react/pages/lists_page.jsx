@@ -59,6 +59,7 @@ class ListList extends React.Component {
     renderLists() {
         var {lists} = this.props.root;
         const {root} = this.props;
+
         return lists.edges.map(({node}) =>
                 <ListComponent.List
                     key={node.id}

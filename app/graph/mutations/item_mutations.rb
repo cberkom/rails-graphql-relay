@@ -39,13 +39,16 @@ module ItemMutations
     name "DestroyItem"
 
     input_field :id, !types.ID
+    input_field :list_id, !types.ID
+
     return_field :deletedId, !types.ID
     return_field :list, ListType
 
     resolve -> (inputs, ctx) {
+      list = NodeIdentification.object_from_id_proc.call(inputs[:list_id])
       item = NodeIdentification.object_from_id_proc.call(inputs[:id])
       item.destroy
-      { list: ListType, deletedId: inputs[:id] }
+      { list: list, deletedId: inputs[:id] }
     }
   end
 end

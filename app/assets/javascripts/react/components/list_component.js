@@ -71,17 +71,6 @@ export class List extends React.Component {
         );
     }
 
-    renderModal() {
-        if (!this.state.modalOpen) {
-            return null;
-        }
-
-        return (
-            <div class="modal">
-                {this.props.children}
-            </div>
-        );
-    }
 
     render() {
         const {name} = this.props.name;
@@ -104,9 +93,9 @@ export class List extends React.Component {
                         </svg>
                     </button>
                 </div>
-                {this.renderModal()}
                 {this.renderTextInput()}
             </li>
+
         );
     }
 }
