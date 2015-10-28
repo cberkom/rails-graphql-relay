@@ -58,6 +58,7 @@ GEM
     byebug (5.0.0)
       columnize (= 0.9.0)
     coderay (1.1.0)
+    colorize (0.7.7)
     columnize (0.9.0)
     debug_inspector (0.0.2)
     erubis (2.7.0)
@@ -171,6 +172,7 @@ PLATFORMS
 DEPENDENCIES
   bootstrap-sass
   browserify-rails
+  colorize
   faker
   graphql
   graphql-relay
