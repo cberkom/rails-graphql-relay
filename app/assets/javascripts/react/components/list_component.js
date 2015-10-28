@@ -64,7 +64,7 @@ class List extends React.Component {
             <TextInput
                 className="edit"
                 initialValue={this.props.list.name}
-                onCanvel={this.onCancelClick}
+                onCancel={this.onCancelClick}
                 onDelete={this.onDestroyClick}
                 onSave={this.handleSave}
             />

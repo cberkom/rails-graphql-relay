@@ -471,7 +471,23 @@ html .clear-completed:active {
   }
 }
 
-
+.cancel {
+  position: absolute;
+  top: 9px;
+  right: 40px;
+  svg {
+    path {
+      fill: lightgray;
+    }
+  }
+  &:hover {
+    svg {
+      path {
+        fill: darkgray;
+      }
+    }
+  }
+}
 
 /*
 	Hack to remove background from Mobile Safari.
