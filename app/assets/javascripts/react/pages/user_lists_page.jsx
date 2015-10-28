@@ -1,19 +1,23 @@
-class Page extends React.Component {
+import React from 'react';
+import Relay from 'react-relay';
+
+class UserList extends React.Component {
     render() {
         return (
-            <div>
-                <h1>List list</h1>
-                <ul>
-                    {this.props.viewer.lists.edges.map(edge =>
-                            <li>{edge.node.name} (ID: {edge.node.id})</li>
-                    )}
-                </ul>
-            </div>
+            <div>TODO!</div>
         );
     }
 }
 
-module.exports = {
-    page: Page,
-    queries: Queries
-};
+export default Relay.createContainer(UserList, {
+    initialVariables: {
+        count: 10
+    },
+    fragments: {
+        node: () => Relay.QL`
+            fragment on User {
+                lists
+            }
+        `
+    }
+});

@@ -5,50 +5,38 @@ import {Router, Route, IndexRoute} from 'react-router';
 import { createHistory } from 'history';
 
 // Import the pages
-import * as AppLayout from '../layouts/app_layout';
-import * as HomePage from '../pages/home_page';
-import * as UserPage from '../pages/user_page';
-import * as ListPage from 'react/pages/list_page';
-import * as ListsPage from 'react/pages/lists_page';
+import AppLayout from '../layouts/app_layout';
+import HomePage from '../pages/home_page';
+import UserPage from '../pages/user_page';
+import ListPage from 'react/pages/list_page';
+import ListsPage from 'react/pages/lists_page';
+import ReactRouterRelay from 'react-router-relay';
 
-// A wrapper to create a Relay container
-function createPageContainer(Component, props) {
-    if (Relay.isContainer(Component)) {
-        // Construct the RelayQueryConfig from the route and the router props.
-        var {name, queries} = props.route;
-        var {params} = props;
-        return (
-            <Relay.RootContainer
-                Component={Component}
-                renderFetched={(data) => <Component {...props} {...data} />}
-                route={{name, params, queries}}
-            />
-        );
-    } else {
-        return <Component {...props}/>;
-    }
-}
+// Import Queries
+import CurrentUserQuery from '../queries/current_user_query';
+import RootQuery from '../queries/root_query';
+import NodeQuery from '../queries/node_query';
 
 export default function(){
     ReactDOM.render(
         <Router
-            createElement={createPageContainer}
+            createElement={ReactRouterRelay.createElement}
             history={createHistory()}>
-            <Route path="/" component={AppLayout.Component}>
-                <IndexRoute component={HomePage.Component} />
+            <Route path="/" component={AppLayout}>
+                <IndexRoute component={HomePage} />
                 <Route
                     name="lists"
                     path="lists"
-                    component={ListsPage.RelayContainer}
-                    queries={ListsPage.Queries}
+                    component={ListsPage}
+                    queries={RootQuery}
+                >
+                    <Route
+                        name="list"
+                        path=":id"
+                        component={ListPage}
+                        queries={NodeQuery}
                     />
-                <Route
-                    name="list"
-                    queryParams={['count']}
-                    path="lists/:id"
-                    component={ListPage.RelayContainer}
-                    queries={ListPage.Queries}
-                />
+                </Route>
             </Route>
         </Router>,
         document.getElementById('root')

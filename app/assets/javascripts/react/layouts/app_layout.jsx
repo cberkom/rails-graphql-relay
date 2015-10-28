@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router';
 
-export const Component = React.createClass({
+export default React.createClass({
     render() {
         return (
             <div className="App">
@@ -11,13 +11,3 @@ export const Component = React.createClass({
         )
     }
 });
-
-//export const Container = Relay.createContainer(Component, {
-//    fragments: {
-//        root: () => Relay.QL`
-//            fragment on RootLevel {
-//                id
-//            }
-//        `
-//    }
-//})

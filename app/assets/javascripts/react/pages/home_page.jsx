@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const Component = React.createClass({
+export default React.createClass({
    render(){
        return(
            <div>

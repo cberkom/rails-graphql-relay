@@ -8,7 +8,7 @@ import EditListMutation from 'react/mutations/edit_list_mutation';
 
 import ListNameInput from './list_name_input_component';
 
-export class List extends React.Component {
+class List extends React.Component {
     static propTypes = {
         root: React.PropTypes.object.isRequired,
         list: React.PropTypes.object.isRequired
@@ -69,22 +69,15 @@ export class List extends React.Component {
         );
     }
     render() {
-        const {name} = this.props.name;
+        const {list} = this.props;
         const {isEditing} = this.state;
 
         return (
-            <li className={classNames({
-                editing: isEditing})
-            }>
+            <li className={classNames({editing: isEditing})}>
                 <div className="view">
-                    <Link to={`/lists/${this.props.list.id}`}>{this.props.list.name}</Link>
-                    <button className="destroy"
-                        onClick={this.onDestroyClick}
-                   />
-
-                    <button className="edit"
-                        onClick={this.onEditClick}
-                    >
+                    <Link to={`/lists/${list.id}`}>{list.name}</Link>
+                    <button className="destroy" onClick={this.onDestroyClick}/>
+                    <button className="edit" onClick={this.onEditClick}>
                         <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="15" height="15" data-icon="pencil" viewBox="0 0 8 8">
                             <path d="M6 0l-1 1 2 2 1-1-2-2zm-2 2l-4 4v2h2l4-4-2-2z"/>
                         </svg>
@@ -98,23 +91,21 @@ export class List extends React.Component {
 
 
 
-export const RelayContainer = Relay.createContainer(List, {
+export default Relay.createContainer(List, {
     initialVariables: {
         isEditing: false
     },
     fragments: {
         root: () => Relay.QL`
             fragment on RootLevel {
-             ${DestroyListMutation.getFragment('root')}
+                id
             }
         `,
         list: () => Relay.QL`
-        fragment on List {
-            id,
-            name,
-            ${DestroyListMutation.getFragment('list')},
-            ${EditListMutation.getFragment('list')}
-        }
+            fragment on List {
+                id,
+                name
+            }
         `
     }
 });

@@ -6,7 +6,7 @@ import {Link} from 'react-router';
 import * as ListItem from 'react/components/list_item_component';
 import  ListNameInput from 'react/components/list_name_input_component';
 
-export class List extends React.Component {
+class List extends React.Component {
 
     _handleScrollLoad() {
         this.props.setVariables({
@@ -54,17 +54,7 @@ export class List extends React.Component {
     }
 }
 
-export const Queries = {
-    list: (Component) => Relay.QL`
-        query {
-          node(id: $id) {
-            ${Component.getFragment('list')},
-          },
-        }
-    `,
-};
-
-export const RelayContainer = Relay.createContainer(List, {
+const Container = Relay.createContainer(List, {
     initialVariables: {
         count: 10
     },
@@ -83,6 +73,8 @@ export const RelayContainer = Relay.createContainer(List, {
               }
             },
           }
-        `,
-    },
+        `
+    }
 });
+
+export default Container;

@@ -7,13 +7,13 @@ var visible = require('visible-element')($);
 
 import {Link} from 'react-router';
 
-import * as ListComponent from 'react/components/list_component';
+import ListComponent from 'react/components/list_component';
 import ListNameInput from 'react/components/list_name_input_component';
-import * as EditListMutation from 'react/mutations/edit_list_mutation';
-import * as DestroyListMutation from 'react/mutations/destroy_list_mutation';
+import EditListMutation from 'react/mutations/edit_list_mutation';
+import DestroyListMutation from 'react/mutations/destroy_list_mutation';
 import CreateListMutation from 'react/mutations/create_list_mutation';
 
-class ListList extends React.Component {
+class ListOfLists extends React.Component {
 
     componentDidMount() {
         var _this = this;
@@ -57,18 +57,24 @@ class ListList extends React.Component {
     };
 
     renderLists() {
-        var {lists} = this.props.root;
         const {root} = this.props;
 
-        return lists.edges.map(({node}) =>
-                <ListComponent.List
+        return root.lists.edges.map(({node}) =>
+                <ListComponent
                     key={node.id}
                     list={node}
-                    name={node.name}
                     root={root}
-                    />
+                />
         );
     }
+
+    //renderModal(){
+    //    if (this.props.children){
+    //        <Modal>
+    //            {this.props.children}
+    //        </Modal>
+    //    }
+    //}
 
     render() {
         return (
@@ -90,17 +96,7 @@ class ListList extends React.Component {
     }
 }
 
-export const Queries = {
-    root: (Component) => Relay.QL`
-        query {
-          root {
-            ${Component.getFragment('root')}
-          }
-        }
-    `
-};
-
-export const RelayContainer = Relay.createContainer(ListList, {
+ const Container = Relay.createContainer(ListOfLists, {
     initialVariables: {
         count: 10
     },
@@ -112,7 +108,7 @@ export const RelayContainer = Relay.createContainer(ListList, {
                     edges {
                         node {
                             id,
-                            name
+                            ${ListComponent.getFragment('list')}
                         }
                     }
                 }
@@ -122,5 +118,6 @@ export const RelayContainer = Relay.createContainer(ListList, {
 
     }
 });
+export default Container
 
 

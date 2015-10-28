@@ -21,7 +21,7 @@ def RelaySchema.prettify(str, colorize: true)
     case char
     when '('
       in_parens = true
-      colors << :green
+      colors << :light_yellow
       string << char
     when ')'
       in_parens = false
@@ -49,7 +49,7 @@ def RelaySchema.prettify(str, colorize: true)
         string << char
       end
       if in_parens
-        colors[-1] = :green
+        colors[-1] = :light_yellow
       else
         string << "\n"
         string << (indent_char * indent_count)
@@ -67,17 +67,22 @@ def RelaySchema.prettify(str, colorize: true)
 
     # Root Level Coloring
     if string.ends_with?('query ') && indent_count == 0
-      string[-('query '.length)..-1] = string[-('query '.length)..-1].colorize(:red)
-      colors << :magenta
+      string[-('query '.length)..-1] = string[-('query '.length)..-1].colorize(:light_green)
+      colors << :light_magenta
+    end
+
+    if string.ends_with?('mutation ') && indent_count == 0
+      string[-('mutation '.length)..-1] = string[-('mutation '.length)..-1].colorize(:light_red)
+      colors << :light_magenta
     end
 
     if string.ends_with?('fragment ') && indent_count == 0
-      string[-('fragment '.length)..-1] = string[-('fragment '.length)..-1].colorize(:light_red)
-      colors << :magenta
+      string[-('fragment '.length)..-1] = string[-('fragment '.length)..-1].colorize(:light_green)
+      colors << :light_magenta
     end
 
     if string.ends_with?('on ') && indent_count == 0
-      colors << :cyan
+      colors << :light_cyan
     end
   end
 end
