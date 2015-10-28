@@ -67,7 +67,7 @@ export class Component extends React.Component {
     }
 
     render() {
-        const {name} = this.props.name;
+        let item = this.props;
         const {isEditing} = this.state;
 
         return (
@@ -75,7 +75,7 @@ export class Component extends React.Component {
                 editing: isEditing})
            }>
                <div className="view">
-                {this.props.name}
+                {item.name}
                    <button className="destroy"
                             onClick={this.onDestroyClick} />
                    <button className="edit"
