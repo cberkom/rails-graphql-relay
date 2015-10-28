@@ -1,6 +1,4 @@
 import React from 'react';
-import Relay from 'react-relay';
-import ReactDOM from 'react-dom';
 import {Router, Route, IndexRoute} from 'react-router';
 import { createHistory } from 'history';
 
@@ -17,19 +15,13 @@ import CurrentUserQuery from '../queries/current_user_query';
 import RootQuery from '../queries/root_query';
 import ListQuery from '../queries/list_query';
 
-export default () => {
-    let mountNode = document.getElementById('root');
-    ReactDOM.render(
-        <Router
-            createElement={ReactRouterRelay.createElement}
-            history={createHistory()}>
-            <Route path="/" component={AppLayout}>
-                <IndexRoute component={HomePage} />
-                <Route name="lists" path="lists" component={ListsPage} queries={RootQuery}>
-                    <Route name="list" path=":id" component={ListPage} queries={ListQuery}/>
-                </Route>
+// Define the routes here
+export default
+    <Router createElement={ReactRouterRelay.createElement} history={createHistory()}>
+        <Route path="/" component={AppLayout}>
+        <IndexRoute component={HomePage} />
+            <Route name="lists" path="lists" component={ListsPage} queries={RootQuery}>
+                <Route name="list" path=":id" component={ListPage} queries={ListQuery}/>
             </Route>
-        </Router>,
-        mountNode
-    );
-}
+        </Route>
+    </Router>;
