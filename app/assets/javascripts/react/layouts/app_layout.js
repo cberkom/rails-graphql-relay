@@ -6,7 +6,12 @@ export default React.createClass({
         const {children} = this.props;
         return (
             <div className="App">
-                <Link to="/">Home</Link>
+                <div className="nav-bar">
+                    <div className="nav-links">
+                        <Link to="/">Home</Link>
+                        <Link to="/lists">Lists</Link>
+                    </div>
+                </div>
                 {children}
             </div>
         )

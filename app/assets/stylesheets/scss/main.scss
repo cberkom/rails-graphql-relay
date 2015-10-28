@@ -44,9 +44,33 @@ input[type="checkbox"] {
   display: none;
 }
 
+.nav-bar {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50px;
+  background: white;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 13px 31px 0 rgba(0, 0, 0, 0.1);
+  .nav-links {
+    position: relative;
+    margin: 15px 10px 10px;
+    a {
+      margin-right: 20px;
+      text-decoration: none;
+      color: #A9A2A2;
+      &:hover {
+        cursor: pointer;
+        color: black;
+      }
+    }
+  }
+}
+
 .lists {
   background: #fff;
-  margin: 130px 0 40px 0;
+  margin: 220px 0 40px 0;
   position: relative;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2),
   0 25px 50px 0 rgba(0, 0, 0, 0.1);
@@ -213,15 +237,15 @@ label[for='toggle-all'] {
     color: inherit;
     &:hover {
       cursor: pointer;
+      color: black;
     }
   }
 }
 .list li.editing .edit {
   display: block;
-  width: 506px;
-  height: 46px;
-  padding: 13px 17px 12px 17px;
+  width: 96%;
   margin: 0 0 0 43px;
+  border-bottom: 1px solid #ededed;
   &:hover {
     cursor: auto;
   }
@@ -302,6 +326,25 @@ label[for='toggle-all'] {
   position: absolute;
   top: -10px;
   right: 40px;
+  bottom: 0;
+  width: 40px;
+  height: 40px;
+  margin: auto 0;
+  font-size: 30px;
+  color: #cc9a9a;
+  transition: color 0.2s ease-out;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.list li input.edit {
+  border: none;
+  box-shadow: none;
+  display: block;
+  position: absolute;
+  top: 2px;
+  right: 6px;
   bottom: 0;
   width: 40px;
   height: 40px;
