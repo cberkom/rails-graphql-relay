@@ -15,11 +15,10 @@ import ReactRouterRelay from 'react-router-relay';
 // Import Queries
 import CurrentUserQuery from '../queries/current_user_query';
 import RootQuery from '../queries/root_query';
-import NodeQuery from '../queries/node_query';
-
-let mountNode = document.getElementById('root');
+import ListQuery from '../queries/list_query';
 
 export default () => {
+    let mountNode = document.getElementById('root');
     ReactDOM.render(
         <Router
             createElement={ReactRouterRelay.createElement}
@@ -36,7 +35,7 @@ export default () => {
                         name="list"
                         path=":id"
                         component={ListPage}
-                        queries={NodeQuery}
+                        queries={ListQuery}
                     />
                 </Route>
             </Route>

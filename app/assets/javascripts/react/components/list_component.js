@@ -101,11 +101,6 @@ export default Relay.createContainer(List, {
         isEditing: false
     },
     fragments: {
-        root: () => Relay.QL`
-            fragment on RootLevel {
-                id
-            }
-        `,
         list: () => Relay.QL`
             fragment on List {
                 id,

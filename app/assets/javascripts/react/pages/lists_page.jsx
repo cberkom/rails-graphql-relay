@@ -7,8 +7,10 @@ var visible = require('visible-element')($);
 
 import {Link} from 'react-router';
 
-import ListComponent from 'react/components/list_component';
+import List from 'react/components/list_component';
+import Modal from 'react/components/modal_component';
 import TextInput from 'react/components/text_input_component';
+
 import EditListMutation from 'react/mutations/edit_list_mutation';
 import DestroyListMutation from 'react/mutations/destroy_list_mutation';
 import CreateListMutation from 'react/mutations/create_list_mutation';
@@ -60,7 +62,7 @@ class ListOfLists extends React.Component {
         const {root} = this.props;
 
         return root.lists.edges.map(({node}) =>
-                <ListComponent
+                <List
                     key={node.id}
                     list={node}
                     root={root}
@@ -68,30 +70,35 @@ class ListOfLists extends React.Component {
         );
     }
 
-    //renderModal(){
-    //    if (this.props.children){
-    //        <Modal>
-    //            {this.props.children}
-    //        </Modal>
-    //    }
-    //}
+    renderModal(){
+        if (this.props.children){
+            return(
+                <Modal>
+                    {this.props.children}
+                </Modal>
+            )
+        }
+    }
 
     render() {
         return (
-            <section className="lists">
-                <div>
-                    <h1>Todo Lists</h1>
-                    <TextInput
-                        className="new-list"
-                        autofocus
-                        placeholder="What's your list called?"
-                        onSave={this.handleSave}
-                        />
-                    <ul className="list">
-                        {this.renderLists()}
-                    </ul>
-                </div>
-            </section>
+            <div>
+                {this.renderModal()}
+                <section className="lists">
+                    <div>
+                        <h1>Todo Lists</h1>
+                        <TextInput
+                            className="new-list"
+                            autofocus
+                            placeholder="What's your list called?"
+                            onSave={this.handleSave}
+                            />
+                        <ul className="list">
+                            {this.renderLists()}
+                        </ul>
+                    </div>
+                </section>
+            </div>
         );
     }
 }
@@ -109,7 +116,7 @@ class ListOfLists extends React.Component {
                     edges {
                         node {
                             id,
-                            ${ListComponent.getFragment('list')}
+                            ${List.getFragment('list')}
                         }
                     }
                 }

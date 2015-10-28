@@ -43,12 +43,14 @@ export default class TextInput extends React.Component {
 
     render() {
         return (
-            <input
-            {...this.props}
-            onKeyDown={this.onKeyDown}
-            onChange={this.onChange}
-            value={this.state.name}
-            />
+            <div className="inputWrapper">
+                <input
+                {...this.props}
+                onKeyDown={this.onKeyDown}
+                onChange={this.onChange}
+                value={this.state.name}
+                />
+            </div>
         );
     }
 }
