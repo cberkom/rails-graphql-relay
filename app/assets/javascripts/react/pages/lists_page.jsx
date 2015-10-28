@@ -82,7 +82,7 @@ class ListOfLists extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="app-wrapper">
                 {this.renderModal()}
                 <section className="lists">
                     <div>
