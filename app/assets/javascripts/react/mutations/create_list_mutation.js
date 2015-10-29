@@ -1,11 +1,27 @@
 import Relay from 'react-relay';
 
 export default class extends Relay.Mutation  {
-
+    /*
+        This method should return a GraphQL operation that represents
+        the mutation to be performed.
+     */
     getMutation() {
         return Relay.QL`mutation{CreateList}`;
     }
 
+    /*
+        Use this method to prepare the variables that will be used as input to the mutation
+     */
+    getVariables() {
+        return {
+            name: this.props.name
+        };
+    }
+
+    /*
+        A 'fat query' is one that represents every field in your data model that could change
+        as a result of the mutation
+     */
     getFatQuery() {
         return Relay.QL`
           fragment on CreateListPayload {
@@ -17,6 +33,10 @@ export default class extends Relay.Mutation  {
         `;
     }
 
+    /*
+        These configs advise Relay how to handle the payload returned by the server.
+
+     */
     getConfigs() {
         return [
             {
@@ -33,11 +53,7 @@ export default class extends Relay.Mutation  {
         ];
     }
 
-    getVariables() {
-        return {
-            name: this.props.name
-        };
-    }
+
 
     getOptimisticResponse() {
         const {root, name} = this.props;

@@ -77,6 +77,10 @@ class List extends React.Component {
 
 
     render() {
+        /*
+            This is a child component of the lists_page. Data from the parent component
+            is accessed by the child through this.props.
+         */
         const {list} = this.props;
         const {isEditing} = this.state;
 
