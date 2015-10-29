@@ -55,8 +55,8 @@ input[type="checkbox"] {
   background: white;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 13px 31px 0 rgba(0, 0, 0, 0.1);
   .nav-links {
-    position: relative;
-    margin: 15px 10px 10px;
+    max-width: 550px;
+    margin: 15px auto;
     a {
       margin-right: 20px;
       text-decoration: none;
@@ -168,7 +168,11 @@ input[type="checkbox"] {
 }
 
 .inputWrapper {
-  padding: 16px;
+  padding: 26px 16px 10px;
+}
+
+.list:last-child {
+  padding-bottom: 50px;
 }
 
 .new-list {

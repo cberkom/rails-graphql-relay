@@ -15,6 +15,10 @@ class List extends React.Component {
         list: React.PropTypes.object.isRequired
     };
 
+    /*
+        In ES6 syntax, instead of providing a separate getInitialState method
+        you can set your state properties in the constructor
+     */
     constructor(props, context) {
         super(props, context);
 
@@ -74,6 +78,10 @@ class List extends React.Component {
 
 
     render() {
+        /*
+            This is a child component of the lists_page. Data from the parent component
+            is accessed by the child through this.props.
+         */
         const {list} = this.props;
         const {isEditing} = this.state;
 

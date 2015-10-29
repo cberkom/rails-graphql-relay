@@ -16,7 +16,11 @@ import DestroyListMutation from 'react/mutations/destroy_list_mutation';
 import CreateListMutation from 'react/mutations/create_list_mutation';
 
 class ListOfLists extends React.Component {
-
+    /*
+        componentDidMount is invoked once on the client, immediately following the initial render.
+        At this point in the application lifecycle you can access any underlying DOM representation.
+        The componentDidMount() method of child components is invoked before the parent components.
+     */
     componentDidMount() {
         var _this = this;
         if (ExecutionEnvironment.canUseDOM) {
@@ -26,7 +30,10 @@ class ListOfLists extends React.Component {
         }
         this._handleScrollLoad()
     }
-
+    /*
+        Invoked immediately after the component's updates are flushed to DOM. You can use this to
+        operate on the DOM when the component has been updated.
+     */
     componentDidUpdate(prevProps) {
         if (prevProps.root.lists.edges != this.props.root.lists.edges) {
             this._handleScrollLoad()
@@ -63,11 +70,8 @@ class ListOfLists extends React.Component {
         const {root} = this.props;
 
         return root.lists.edges.map(({node}) =>
-                <List
-                    key={node.id}
-                    list={node}
-                    root={root}
-                />
+                <List key={node.id} list={node} root={root} />
+
         );
     }
 
@@ -81,6 +85,10 @@ class ListOfLists extends React.Component {
         }
     }
 
+    /*
+        Render is what get's output into the DOM. Note that native HTML element names start with lowercase letters
+        where custom React class names begin with an uppercase letter.
+     */
     render() {
         return (
             <div data-react-page="lists">
@@ -103,6 +111,13 @@ class ListOfLists extends React.Component {
         );
     }
 }
+
+/*
+The Relay Container holds schema information that allows Relay to understand things like field arguments,
+which fields are connections or lists, and how to efficiently refetch records from the server.
+
+Note that you can pass get a child's fragment by calling it from with in the Relay.QL
+*/
 
  const Container = Relay.createContainer(ListOfLists, {
     initialVariables: {
