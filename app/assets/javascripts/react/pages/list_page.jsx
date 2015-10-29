@@ -7,9 +7,7 @@ import * as Item from 'react/components/item_component';
 import  TextInput from 'react/components/text_input_component';
 import CreateItemMutation from 'react/mutations/create_item_mutation';
 
-class List extends React.Component {
-
-
+class List extends React.Component
     handleSave = (name) => {
         const {list} = this.props;
 

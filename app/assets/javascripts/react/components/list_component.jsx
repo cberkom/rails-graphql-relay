@@ -14,6 +14,10 @@ class List extends React.Component {
         list: React.PropTypes.object.isRequired
     };
 
+    /*
+        In ES6 syntax, instead of providing a separate getInitialState method
+        you can set your state properties in the constructor
+     */
     constructor(props, context) {
         super(props, context);
 
