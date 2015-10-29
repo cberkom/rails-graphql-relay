@@ -1,0 +1,31 @@
+[data-react-layout="app"] {
+  .nav-bar {
+    z-index: 1;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50px;
+    background: white;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 13px 31px 0 rgba(0, 0, 0, 0.1);
+
+    .nav-links {
+      position: relative;
+      margin: 15px 10px 10px;
+      max-width: 550px;
+      margin: 15px auto;
+
+      a {
+        margin-right: 20px;
+        text-decoration: none;
+        color: #A9A2A2;
+
+        &:hover {
+          cursor: pointer;
+          color: black;
+        }
+      }
+    }
+  }
+}

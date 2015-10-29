@@ -5,7 +5,7 @@ export default React.createClass({
     render() {
         const {children} = this.props;
         return (
-            <div className="App">
+            <div data-react-layout="app">
                 <div className="nav-bar">
                     <div className="nav-links">
                         <Link to="/">Home</Link>

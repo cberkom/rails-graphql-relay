@@ -34,13 +34,13 @@ class List extends React.Component {
     render() {
         var {list} = this.props;
         return (
-            <div className="App modal-wrapper">
-                <section className="modal">
+            <div data-react-page="list">
+                <section className="inner">
                     <div className="modal-header">
                         <h2>{list.name}</h2>
                         <Link className="close" to={`/lists`}/>
                     </div>
-                    <div className="modal-body lists">
+                    <div className="content-body">
                         <TextInput
                             className="new-list"
                             autofocus

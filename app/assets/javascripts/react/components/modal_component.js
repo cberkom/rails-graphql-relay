@@ -4,8 +4,12 @@ import keycode from 'keycode';
 export default class Modal extends React.Component {
     render() {
         return (
-            <div className='modal-bg'>
-                {this.props.children}
+            <div data-react-component="modal">
+                <div className="modal-wrapper">
+                    <div className="modal-content">
+                        {this.props.children}
+                    </div>
+                </div>
             </div>
         );
     }

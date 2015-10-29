@@ -34,7 +34,7 @@ class ListOfLists extends React.Component {
     }
 
     _lastListItemVisible() {
-        var lastList = $(".list li").last();
+        var lastList = $('[data-react-page="lists"] > .content-body li[data-react-component="list"]').last()
         return lastList[0] && visible.inViewport(lastList);
     }
 
@@ -83,9 +83,9 @@ class ListOfLists extends React.Component {
 
     render() {
         return (
-            <div className="app-wrapper">
+            <div data-react-page="lists">
                 {this.renderModal()}
-                <section className="lists">
+                <section className="content-body">
                     <div>
                         <h1>Todo Lists</h1>
                         <TextInput
@@ -94,7 +94,7 @@ class ListOfLists extends React.Component {
                             placeholder="What's your list called?"
                             onSave={this.handleSave}
                             />
-                        <ul className="list">
+                        <ul className="list-of-lists">
                             {this.renderLists()}
                         </ul>
                     </div>

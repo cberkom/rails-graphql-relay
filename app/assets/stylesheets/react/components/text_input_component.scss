@@ -1,0 +1,21 @@
+[data-react-component="text_input"] {
+  padding: 16px;
+
+  .cancel {
+    position: absolute;
+    top: 9px;
+    right: 40px;
+    svg {
+      path {
+        fill: lightgray;
+      }
+    }
+    &:hover {
+      svg {
+        path {
+          fill: darkgray;
+        }
+      }
+    }
+  }
+}

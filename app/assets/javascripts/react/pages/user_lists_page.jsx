@@ -4,7 +4,7 @@ import Relay from 'react-relay';
 class UserList extends React.Component {
     render() {
         return (
-            <div>TODO!</div>
+            <div data-react-page="user_lists">TODO!</div>
         );
     }
 }
