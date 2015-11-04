@@ -4,7 +4,7 @@ An implementation of the Relay.js example app, delivered by rails and the asset 
 # Setup
 
 * `npm install`
-* `gem install`
+* `bundle install`
 * `rake db:migrate`
 * `rails s`
 
