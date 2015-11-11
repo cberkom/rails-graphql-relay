@@ -22,5 +22,7 @@ module RelayOnRails
     config.middleware.use GraphQLReloader
     config.browserify_rails.commandline_options = '-t [ babelify --optional es7.classProperties --plugins "./relay/schema_generator.js" ] --extension=".jsx"'
     config.autoload_paths << Rails.root.join('app/graph')
+    config.autoload_paths << Rails.root.join('app/graph/mutations')
+    config.autoload_paths << Rails.root.join('app/graph/types')
   end
 end

@@ -1,4 +1,6 @@
-import Routes from 'react/config/routes';
+import ReactDOM from 'react-dom';
+import Routes from 'react/config/routes.js';
 import $ from 'jquery';
 
-$(document).ready(Routes);
+window.$ = $;
+$(document).ready(() => ReactDOM.render(Routes, document.getElementById('root')));

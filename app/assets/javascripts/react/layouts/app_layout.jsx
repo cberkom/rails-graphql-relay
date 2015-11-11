@@ -1,10 +1,18 @@
 import React from 'react';
+import {Link} from 'react-router';
 
-export const Component = React.createClass({
+export default React.createClass({
     render() {
+        const {children} = this.props;
         return (
-            <div className="App">
-                {this.props.children}
+            <div data-react-layout="app">
+                <div className="nav-bar">
+                    <div className="nav-links">
+                        <Link to="/">Home</Link>
+                        <Link to="/lists">Lists</Link>
+                    </div>
+                </div>
+                {children}
             </div>
         )
     }

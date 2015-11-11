@@ -1,0 +1,44 @@
+[data-react-component="text_input"] {
+  padding: 16px;
+
+  .cancel {
+    position: absolute;
+    top: 9px;
+    right: 40px;
+    svg {
+      path {
+        fill: lightgray;
+      }
+    }
+    &:hover {
+      svg {
+        path {
+          fill: darkgray;
+        }
+      }
+    }
+  }
+
+  .new-list,
+  .edit {
+    position: relative;
+    margin: 0;
+    width: 98%;
+    font-size: 24px;
+    font-family: inherit;
+    font-weight: inherit;
+    line-height: 1.4em;
+    border: 0;
+    outline: none;
+    color: #B7B6B6;
+    padding: 6px;
+    border-bottom: 1px solid #e6e6e6;
+    -webkit-font-smoothing: antialiased;
+    -moz-font-smoothing: antialiased;
+    font-smoothing: antialiased;
+  }
+
+  li.editing button.edit {
+    display: none !important;
+  }
+}

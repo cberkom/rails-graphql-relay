@@ -1,21 +1,22 @@
 import React from 'react';
 import Relay from 'react-relay';
 
-class User extends React.Component {
+class UserList extends React.Component {
     render() {
         return (
-            <div data-react-page="user">TODO!</div>
+            <div data-react-page="user_lists">TODO!</div>
         );
     }
 }
 
-export default Relay.createContainer(User, {
+export default Relay.createContainer(UserList, {
+    initialVariables: {
+        count: 10
+    },
     fragments: {
         node: () => Relay.QL`
             fragment on User {
-                first_name,
-                last_name,
-                email
+                lists
             }
         `
     }

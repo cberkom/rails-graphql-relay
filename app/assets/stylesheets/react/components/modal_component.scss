@@ -1,0 +1,70 @@
+[data-react-component="modal"] {
+  z-index: 10;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+
+  .modal-wrapper {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    outline: 0;
+    overflow: hidden;
+
+    .modal-content {
+      background-color: #f9f9f9;
+      position: relative;
+      width: 60%;
+      max-width: 600px;
+      padding: 0 40px 40px 40px;
+      color: #111;
+      overflow: hidden;
+      -webkit-font-smoothing: antialiased;
+      margin: 10% auto;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .modal-header {
+      clear: both;
+      display: block;
+      height: 50px;
+      font-size: 80px;
+      font-weight: 100;
+      text-align: left;
+      color: rgba(175, 47, 47, 0.15);
+      -webkit-text-rendering: optimizeLegibility;
+      -moz-text-rendering: optimizeLegibility;
+      text-rendering: optimizeLegibility;
+
+      h2 {
+        font-size: 55px;
+        font-weight: 100;
+        text-align: center;
+      }
+
+      .close {
+        position: absolute;
+        top: -20px;
+        right: 20px;
+        font-size: 30px;
+        text-decoration: none;
+        color: black;
+        line-height: 80px;
+
+        &:hover {
+          color: #af5b5e;
+          cursor: pointer;
+        }
+
+        &:after {
+          content: '×';
+        }
+      }
+    }
+  }
+}
