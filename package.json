@@ -1,4 +1,12 @@
 {
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/brandfolder/rails-graphql-relay.git"
+  },
+  "engines": {
+    "node": "<= 4.2"
+  },
   "dependencies": {
     "babel-core": "^5.8.25",
     "babel-relay-plugin": "^0.3.0",
@@ -14,7 +22,6 @@
     "react-dom": "^0.14.0",
     "react-relay": "^0.4.0",
     "react-router": "^1.0.0-rc3",
-    "react-router-relay": "^0.7.0",
-    "visible-element": "^1.0.0"
+    "react-router-relay": "^0.7.0"
   }
 }
