@@ -25,7 +25,7 @@ ReactRouterRelay.createElement instead.
 
 export default
     <Router createElement={ReactRouterRelay.createElement} history={createHistory()}>
-        <Route path="/" component={AppLayout}>
+        <Route path="/" component={AppLayout} queries={RootQuery}>
             <IndexRoute component={HomePage} />
             <Route name="lists" path="lists" component={ListsPage} queries={RootQuery}>
                 <Route name="list" path=":id" component={ListPage} queries={ListQuery}/>

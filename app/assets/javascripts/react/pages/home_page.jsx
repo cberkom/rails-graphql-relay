@@ -7,6 +7,7 @@ compiler automatically rewrites the HTML tags to React.createElement(tagName)
 */
 
 export default React.createClass({
+    
    render(){
        return(
            <div data-react-page="home">
