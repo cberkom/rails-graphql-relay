@@ -9,7 +9,6 @@ import App from './components/App';
 import AppHomeRoute from './routes/AppHomeRoute';
 
 var StartApp = () => {
-    console.log('in here');
     ReactDOM.render(
         <Relay.RootContainer
             Component={App}
