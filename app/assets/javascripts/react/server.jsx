@@ -1,5 +1,3 @@
-import {injectNetworkLayer} from 'isomorphic-relay';
-
 import { Router, match, RoutingContext } from 'react-router';
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -29,17 +27,5 @@ serve((req, res) => {
         }
     })
 })
-
-
-//
-//app.use((req, res) => {
-//    Router.run(routes, req.path, (Root, state) => {
-//        res.send('<!DOCTYPE html>' + ReactDOM.renderToString(
-//                <Relay.RootContainer
-//                Component={App}
-//                route={new AppHomeRoute()}
-//                /> ));
-//    });
-//});
 
 
