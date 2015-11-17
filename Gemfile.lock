@@ -69,6 +69,8 @@ GEM
       activesupport (>= 4.1.0)
     graphql (0.10.0)
       parslet (~> 1.6)
+    graphql-formatter (0.1.1)
+      colorize
     graphql-relay (0.4.4)
       graphql (~> 0.8)
     i18n (0.7.0)
@@ -172,9 +174,9 @@ PLATFORMS
 DEPENDENCIES
   bootstrap-sass
   browserify-rails
-  colorize
   faker
   graphql
+  graphql-formatter
   graphql-relay
   jquery-rails
   pry-byebug
