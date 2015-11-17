@@ -1,6 +1,6 @@
 import React from 'react';
 import {Router, Route, IndexRoute} from 'react-router';
-import { createHistory } from 'history';
+import createHistory from 'history';
 import ReactRouterRelay from 'react-router-relay';
 
 // Import the pages
