@@ -1,9 +1,4 @@
-import React from 'react';
-import {Route, IndexRoute} from 'react-router';
-import createHistory from 'history';
-import IsomorphicRelay from 'isomorphic-relay';
-import IsomorphicRouter from 'isomorphic-relay-router';
-import ReactRouterRelay from 'react-router-relay';
+import ExecutionEnvironment from 'exenv';
 
 // Import the pages
 import AppLayout from '../layouts/app_layout';
@@ -32,12 +27,14 @@ export default [
                 path: 'lists',
                 component: ListsPage,
                 queries: RootQuery,
-                childRoutes: {
-                    name: 'list',
-                    path: ':id',
-                    component: ListPage,
-                    queries: ListQuery
-                }
+                childRoutes: [
+                    {
+                        name: 'list',
+                        path: ':id',
+                        component: ListPage,
+                        queries: ListQuery
+                    }
+                ]
             }
         ]
     }

@@ -2,8 +2,11 @@
 <html>
 <head>
   <title>RelayOnRails</title>
-  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
+  <% (@scripts || []).each do |script| %>
+      <%= content_tag(:script, script['_'].to_json.html_safe, script.except('_')) %>
+  <% end %>
   <%= csrf_meta_tags %>
 </head>
 <body>

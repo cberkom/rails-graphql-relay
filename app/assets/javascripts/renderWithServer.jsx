@@ -14,7 +14,6 @@ CLI
     .option('-h, --host <s>', 'The host of the GraphQL server.')
     .parse(process.argv);
 
-console.log("'" + CLI.host + "'");
 Relay.injectNetworkLayer(new Relay.DefaultNetworkLayer(CLI.host + '/graphql'));
 
 GraphQLStoreChangeEmitter.injectBatchingStrategy(_.noop);
@@ -26,7 +25,6 @@ match({routes, location: CLI.path}, (error, redirectLocation, renderProps) => {
         console.error(error);
         throw error;
     } else if (redirectLocation) {
-        console.error('redirecting');
         obj = {
             status: 302,
             headers: {
@@ -36,11 +34,8 @@ match({routes, location: CLI.path}, (error, redirectLocation, renderProps) => {
         };
         console.log(JSON.stringify(obj));
     } else if (renderProps) {
-        console.error('rendering');
         IsomorphicRouter.prepareData(renderProps).then(render).catch(() => { throw 'error' });
-        console.error('done rendering');
     } else {
-        console.error('not found');
         obj = {
             status: 404,
             body: 'Not Found'
@@ -49,7 +44,6 @@ match({routes, location: CLI.path}, (error, redirectLocation, renderProps) => {
     }
 
     function render(data) {
-        console.log(data);
         const reactOutput = ReactDOMServer.renderToString(
             <IsomorphicRouter.RoutingContext {...renderProps} />
         );
