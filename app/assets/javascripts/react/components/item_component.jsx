@@ -3,8 +3,8 @@ import Relay from 'react-relay';
 import {Link} from 'react-router';
 import classNames from 'classnames';
 
-import DestroyItemMutation from 'react/mutations/destroy_item_mutation';
-import EditItemMutation from 'react/mutations/edit_item_mutation';
+import DestroyItemMutation from '../mutations/destroy_item_mutation';
+import EditItemMutation from '../mutations/edit_item_mutation';
 
 import TextInput from './text_input_component';
 import Button from './button_component';

@@ -2,8 +2,7 @@ import React from 'react';
 import Relay from 'react-relay';
 import {Link} from 'react-router';
 
-import Nav from 'react/components/nav_component';
-
+import Nav from '../components/nav_component';
 
 class AppLayout extends React.Component {
     static propTypes = {

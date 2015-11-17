@@ -1,5 +1,5 @@
 import ReactDOM from 'react-dom';
-import Routes from 'react/config/routes.js';
+import Routes from './react/config/routes.es6';
 import $ from 'jquery';
 
 window.$ = $;

@@ -2,7 +2,7 @@ import React from 'react';
 import Relay from 'react-relay';
 import {IndexLink, Link} from 'react-router';
 
-import List from 'react/components/list_component';
+import List from '../components/list_component';
 class Nav extends React.Component {
     static propTypes = {
         root: React.PropTypes.object.isRequired
