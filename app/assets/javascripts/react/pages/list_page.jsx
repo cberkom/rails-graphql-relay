@@ -1,11 +1,13 @@
+import * as promise from 'es6-promise';
 import React from 'react';
 import Relay from 'react-relay';
-import 'babel-core/polyfill';
 import {Link} from 'react-router';
 
-import * as Item from 'react/components/item_component';
-import  TextInput from 'react/components/text_input_component';
-import CreateItemMutation from 'react/mutations/create_item_mutation';
+import * as Item from '../components/item_component';
+import  TextInput from '../components/text_input_component';
+import CreateItemMutation from '../mutations/create_item_mutation';
+
+promise.polyfill();
 
 class List extends React.Component {
     handleSave = (name) => {

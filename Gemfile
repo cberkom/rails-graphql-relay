@@ -13,7 +13,7 @@ gem 'graphql-relay'
 gem 'sqlite3'
 gem 'faker'
 gem 'bootstrap-sass'
-gem 'colorize'
+gem 'graphql-formatter'
 
 group :doc do
   gem 'sdoc', '~> 0.4.0'

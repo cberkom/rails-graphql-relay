@@ -1,0 +1,13 @@
+{
+  "stage": 0,
+  "plugins": [
+    "babel-relay-plugin-loader"
+  ],
+  "sourceMaps": "inline",
+  "optional": [
+    "runtime",
+    "es7.decorators",
+    "es7.classProperties"
+  ]
+}
+

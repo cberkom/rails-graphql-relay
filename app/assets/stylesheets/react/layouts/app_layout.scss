@@ -25,6 +25,10 @@
           cursor: pointer;
           color: black;
         }
+
+        &.selected {
+          color: #2E2F30;
+        }
       }
     }
   }
