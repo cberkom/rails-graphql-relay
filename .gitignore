@@ -20,6 +20,7 @@ capybara-*.html
 /db/*.sqlite3
 /db/*.sqlite3-journal
 /public/system
+/app/assets/javascripts/relay/schema.json
 /public/assets
 /coverage/
 /spec/tmp
