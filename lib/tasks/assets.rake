@@ -4,4 +4,4 @@ namespace :graphql do
   end
 end
 
-Rake::Task['assets:precompile'].enhance('graphql:generate_schema')
+Rake::Task['assets:precompile'].enhance ['graphql:generate_schema']
