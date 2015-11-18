@@ -1,4 +1,4 @@
-# React On Rails
+# React On Rails [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 An implementation of the Relay.js example app, delivered by rails and the asset pipeline.
 
 # Setup
