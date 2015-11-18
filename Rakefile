@@ -3,4 +3,6 @@
 
 require File.expand_path('../config/application', __FILE__)
 
+Rake::Task['assets:precompile'].enhance('npm:install')
+
 Rails.application.load_tasks
