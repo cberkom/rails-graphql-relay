@@ -1,3 +1,4 @@
+process = require('process');
 import GraphQLStoreChangeEmitter from 'react-relay/lib/GraphQLStoreChangeEmitter';
 import IsomorphicRouter from 'isomorphic-relay-router';
 import React from 'react';
@@ -18,12 +19,16 @@ Relay.injectNetworkLayer(new Relay.DefaultNetworkLayer(CLI.host + '/graphql'));
 
 GraphQLStoreChangeEmitter.injectBatchingStrategy(_.noop);
 
+function throwError(msg){
+    console.error(msg);
+    process.exit(1);
+}
+
 match({routes, location: CLI.path}, (error, redirectLocation, renderProps) => {
     var obj;
 
     if (error) {
-        console.error(error);
-        throw error;
+        throwError(error);
     } else if (redirectLocation) {
         obj = {
             status: 302,
@@ -34,7 +39,7 @@ match({routes, location: CLI.path}, (error, redirectLocation, renderProps) => {
         };
         console.log(JSON.stringify(obj));
     } else if (renderProps) {
-        IsomorphicRouter.prepareData(renderProps).then(render).catch(() => { throw 'error' });
+        IsomorphicRouter.prepareData(renderProps).then(render, throwError)
     } else {
         obj = {
             status: 404,
