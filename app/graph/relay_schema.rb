@@ -22,6 +22,7 @@ module RelaySchemaHelpers
     unless File.exists?(SCHEMA_PATH) && File.read(SCHEMA_PATH) == result
       File.write(SCHEMA_PATH, result)
     end
+    puts File.read(SCHEMA_PATH)
   end
 
   def remove
