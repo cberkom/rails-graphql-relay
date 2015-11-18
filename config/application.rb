@@ -19,7 +19,6 @@ Bundler.require(*Rails.groups)
 
 module RelayOnRails
   class Application < Rails::Application
-    config.middleware.use GraphQLReloader
     config.browserify_rails.commandline_options = '-t [ babelify ] --extension=".jsx" --extension=".es6"'
     config.browserify_rails.source_map_environments << "development"
     config.browserify_rails.evaluate_node_modules = true
