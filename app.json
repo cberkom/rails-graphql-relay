@@ -1,5 +1,5 @@
 {
-  "name": "React + Relay + GraphQL on Rails",
+  "name": "rails-graphql-relay",
   "description": "A Todo APP written in React + Relay and served up by GraphQL on Rails",
   "repository": "https://github.com/brandfolder/rails-graphql-relay/",
   "logo": "https://brandfolder.com/brandfolder/logo.png",
