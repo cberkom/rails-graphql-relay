@@ -90,7 +90,7 @@ export class Component extends React.Component {
 export const RelayContainer = Relay.createContainer(Component, {
     fragments: {
         item: () => Relay.QL`
-            fragment on Component {
+            fragment on Item {
                 id,
                 name
             }
