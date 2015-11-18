@@ -2,6 +2,33 @@
   "name": "rails-graphql-relay",
   "description": "A Todo APP written in React + Relay and served up by GraphQL on Rails",
   "repository": "https://github.com/brandfolder/rails-graphql-relay/",
+  "website": "https://github.com/brandfolder/rails-graphql-relay/",
+  "scripts": {
+    "postdeploy": "bundle exec rake db:migrate"
+  },
+  "env": {
+    "SECRET_TOKEN": {
+      "description": "A secret key for verifying the integrity of signed cookies.",
+      "generator": "superdupersecretkeythatshouldtakemanyagestocrack"
+    }
+  },
   "logo": "https://brandfolder.com/brandfolder/logo.png",
-  "keywords": ["react", "graphql", "relay", "rails"]
+  "keywords": [
+    "react",
+    "graphql",
+    "relay",
+    "rails"
+  ],
+  "image": "heroku/ruby",
+  "addons": [
+    "heroku-postgresql:hobby-dev"
+  ],
+  "buildpacks": [
+    {
+      "url": "https://github.com/heroku/heroku-buildpack-nodejs.git"
+    },
+    {
+      "url": "https://github.com/heroku/heroku-buildpack-ruby.git"
+    }
+  ]
 }
