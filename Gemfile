@@ -18,11 +18,11 @@ gem 'graphql-formatter'
 gem 'pg'
 
 group :doc do
-  gem 'sqlite3'
   gem 'sdoc', '~> 0.4.0'
 end
 
 group :development, :test do
+  gem 'sqlite3'
   gem 'pry-byebug'
 end
 
