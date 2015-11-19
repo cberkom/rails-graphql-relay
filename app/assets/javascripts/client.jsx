@@ -10,7 +10,7 @@ import $ from 'jquery';
 window.$ = $;
 
 $(document).ready(() => {
-    const data = JSON.parse(document.getElementById('preloadedData').textContent);
+    const data = JSON.parse((preloadedData || {}).textContent);
     IsomorphicRelay.injectPreparedData(data);
     ReactDOM.render(
         <IsomorphicRouter.Router routes={routes} history={createBrowserHistory()}/>,

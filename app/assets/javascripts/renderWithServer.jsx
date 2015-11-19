@@ -24,6 +24,11 @@ function throwError(msg){
     process.exit(1);
 }
 
+function renderResponse(obj){
+    console.log('<-><-><-><-><-><-><-><-><->');
+    console.log(JSON.stringify(obj));
+}
+
 match({routes, location: CLI.path}, (error, redirectLocation, renderProps) => {
     var obj;
 
@@ -37,7 +42,7 @@ match({routes, location: CLI.path}, (error, redirectLocation, renderProps) => {
             },
             body: 'Redirecting'
         };
-        console.log(JSON.stringify(obj));
+        renderResponse(obj);
     } else if (renderProps) {
         IsomorphicRouter.prepareData(renderProps).then(render, throwError)
     } else {
@@ -45,7 +50,7 @@ match({routes, location: CLI.path}, (error, redirectLocation, renderProps) => {
             status: 404,
             body: 'Not Found'
         };
-        console.log(JSON.stringify(obj));
+        renderResponse(obj);
     }
 
     function render(data) {
@@ -59,7 +64,7 @@ match({routes, location: CLI.path}, (error, redirectLocation, renderProps) => {
             ],
             body: reactOutput
         };
-        console.log(JSON.stringify(obj));
+        renderResponse(obj);
     }
 });
 

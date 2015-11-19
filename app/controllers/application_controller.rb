@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
       headers[h] = value
     end
     @scripts = result['scripts'] || []
-    @body    = result['body'].html_safe
+    @body    = result['body'].try(:html_safe)
     render status: result['status']
   end
 
@@ -24,7 +24,9 @@ class ApplicationController < ActionController::Base
       exit_status = t.value
     }
     raise error if exit_status.exitstatus > 0
-    JSON.load output
+    log, json = output.split('<-><-><-><-><-><-><-><-><->')
+    puts log
+    JSON.load(json)
   end
 
   def request_hostname

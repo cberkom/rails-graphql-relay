@@ -3,17 +3,21 @@ import ExecutionEnvironment from 'exenv';
 var visible = require('visible-element')($);
 
 export default class {
-    constructor(component, listElementString){
-        self = this;
+    constructor(component, listElementString) {
         this.component = component;
         this.listElementString = listElementString;
-        if (ExecutionEnvironment.canUseViewport) {
+        this.watchScroll();
+    };
+
+    watchScroll() {
+        self = this;
+        if (ExecutionEnvironment.canUseDOM) {
             $(document).scroll('scroll', function () {
                 self.handleScrollLoad.call(self)
             });
             this.handleScrollLoad()
         }
-    };
+    }
 
     lastListItemVisible() {
         var lastLi = $(`${this.listElementString} li`).last();
@@ -27,7 +31,7 @@ export default class {
     }
 
     handleScrollLoad() {
-        if (ExecutionEnvironment.canUseViewport && this.lastListItemVisible()) {
+        if (ExecutionEnvironment.canUseDOM && this.lastListItemVisible()) {
             this.loadMore();
         }
     }
