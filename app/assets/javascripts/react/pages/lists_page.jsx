@@ -1,11 +1,7 @@
 import * as promise from 'es6-promise';
 import React from 'react';
 import Relay from 'react-relay';
-import ExecutionEnvironment from 'exenv';
-import $ from 'jquery';
-
 import {Link} from 'react-router';
-
 import List from '../components/list_component';
 import Modal from '../components/modal_component';
 import TextInput from '../components/text_input_component';
@@ -13,10 +9,9 @@ import TextInput from '../components/text_input_component';
 import EditListMutation from '../mutations/edit_list_mutation';
 import DestroyListMutation from '../mutations/destroy_list_mutation';
 import CreateListMutation from '../mutations/create_list_mutation';
+import ScrollLoader from '../helpers/scroll_loader';
 
 promise.polyfill();
-
-var visible = require('visible-element')($);
 
 class ListOfLists extends React.Component {
     /*
@@ -25,13 +20,7 @@ class ListOfLists extends React.Component {
      The componentDidMount() method of child components is invoked before the parent components.
      */
     componentDidMount() {
-        var _this = this;
-        if (ExecutionEnvironment.canUseDOM) {
-            $(document).scroll('scroll', function () {
-                _this._handleScrollLoad.call(_this)
-            });
-        }
-        this._handleScrollLoad()
+        this.scrollLoader = new ScrollLoader(this, '.list-of-lists');
     }
 
     /*
@@ -40,24 +29,7 @@ class ListOfLists extends React.Component {
      */
     componentDidUpdate(prevProps) {
         if (prevProps.root.lists.edges != this.props.root.lists.edges) {
-            this._handleScrollLoad()
-        }
-    }
-
-    _lastListItemVisible() {
-        var lastList = $('[data-react-page="lists"] > .content-body li[data-react-component="list"]').last()
-        return lastList[0] && visible.inViewport(lastList);
-    }
-
-    _loadMore() {
-        this.props.relay.setVariables({
-            count: this.props.relay.variables.count + 10
-        });
-    }
-
-    _handleScrollLoad() {
-        if (this._lastListItemVisible()) {
-            this._loadMore();
+            this.scrollLoader.handleScrollLoad()
         }
     }
 

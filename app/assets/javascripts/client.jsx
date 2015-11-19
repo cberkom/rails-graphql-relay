@@ -7,6 +7,8 @@ import ReactDOM from 'react-dom';
 import routes from './react/config/routes';
 import $ from 'jquery';
 
+window.$ = $;
+
 $(document).ready(() => {
     const data = JSON.parse(document.getElementById('preloadedData').textContent);
     IsomorphicRelay.injectPreparedData(data);

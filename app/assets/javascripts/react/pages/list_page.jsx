@@ -1,8 +1,8 @@
 import * as promise from 'es6-promise';
 import React from 'react';
 import Relay from 'react-relay';
+import ScrollLoader from '../helpers/scroll_loader';
 import {Link} from 'react-router';
-
 import * as Item from '../components/item_component';
 import  TextInput from '../components/text_input_component';
 import CreateItemMutation from '../mutations/create_item_mutation';
@@ -21,13 +21,13 @@ class List extends React.Component {
     renderItems() {
         var {list} = this.props;
         return list.items.edges.map(({node}) =>
-                <Item.Component
-                    key={node.id}
-                    item={node}
-                    name={node.name}
-                    body={node.body}
-                    list={list}
-                    />
+            <Item.Component
+                key={node.id}
+                item={node}
+                name={node.name}
+                body={node.body}
+                list={list}
+            />
         );
     }
 
@@ -46,7 +46,7 @@ class List extends React.Component {
                             autofocus
                             placeholder="What do you have to do?"
                             onSave={this.handleSave}
-                            />
+                        />
                         <ul className="list">
                             {this.renderItems()}
                         </ul>
@@ -60,7 +60,7 @@ class List extends React.Component {
 
 const Container = Relay.createContainer(List, {
     initialVariables: {
-        count: 10
+        count: 1000
     },
     fragments: {
         list: () => Relay.QL`
