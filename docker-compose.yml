@@ -1,0 +1,16 @@
+files:
+  image: busybox
+  volumes:
+    - /usr/local/bundle
+# db:
+#   image: postgres
+web:
+  build: .
+  volumes:
+    - .:/www
+  volumes_from:
+    - files
+  ports:
+    - "80:80"
+  # links:
+  #   - db

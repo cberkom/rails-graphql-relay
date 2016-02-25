@@ -8,14 +8,15 @@ gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
 gem 'puma'
 gem 'pry-rails'
+gem 'pg'
+gem 'faker'
+gem 'bootstrap-sass'
+
 gem 'sprockets-es6'
 gem 'browserify-rails'
 gem 'graphql'
 gem 'graphql-relay'
-gem 'faker'
-gem 'bootstrap-sass'
 gem 'graphql-formatter'
-gem 'pg'
 
 group :doc do
   gem 'sdoc', '~> 0.4.0'
